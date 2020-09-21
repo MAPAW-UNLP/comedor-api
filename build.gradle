@@ -7,7 +7,7 @@ plugins {
 
 apply from: 'liquibase.gradle'
 
-group = 'unlp.info.mapaw'
+group = 'unlp.info.mapaw.comedor'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 

@@ -1,4 +1,4 @@
-package unlp.info.mapaw.cugt.domain;
+package unlp.info.mapaw.comedor.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

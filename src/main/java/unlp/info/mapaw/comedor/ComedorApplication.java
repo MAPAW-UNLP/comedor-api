@@ -1,13 +1,13 @@
-package unlp.info.mapaw.cugt;
+package unlp.info.mapaw.comedor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GestorTickectsApplication {
+public class ComedorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GestorTickectsApplication.class, args);
+		SpringApplication.run(ComedorApplication.class, args);
 	}
 
 }

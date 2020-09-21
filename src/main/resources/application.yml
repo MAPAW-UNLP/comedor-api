@@ -3,6 +3,8 @@
 # DATASOURCE PARAMETERS
 # ----------------------------------------
 spring:
+  banner:
+    location: banner.txt
   datasource:
     driver-class-name: org.h2.Driver
     dialect: org.hibernate.dialect.H2Dialect
