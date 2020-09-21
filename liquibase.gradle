@@ -1,0 +1,23 @@
+dependencies {
+	
+  liquibaseRuntime 'org.liquibase:liquibase-core:3.9.0'
+  liquibaseRuntime 'ch.qos.logback:logback-core'
+  liquibaseRuntime 'ch.qos.logback:logback-classic'
+  
+  liquibaseRuntime 'com.h2database:h2'	
+}
+
+
+
+liquibase {
+  activities {
+    main { 
+      contexts 'MEM'
+      changeLogFile 'src/main/resources/db/liquibase/db.changelog.xml'
+      url System.properties['liquibase.url']
+      username System.properties['liquibase.username']
+      password System.properties['liquibase.password']
+      classpath "$rootDir"
+    }  
+  }
+}
