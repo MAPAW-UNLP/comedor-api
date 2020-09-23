@@ -13,7 +13,7 @@ La siguiente guía te permitirá descargar este proyecto y levantar la aplicaci�
 
 
 ```git
-$ git clone https://dgsiaf-gitlab.mecon.ar/sireco/sireco-code.git
+$ git clone https://github.com/MAPAW-UNLP/comedor-api.git
 ```
 
 
@@ -43,7 +43,7 @@ Si usas eclipse:
 
 * Importa el repositorio como un proyecto Gradle, dejando la opción Gradle wrapper.
 * Para descargar las dependencias, botón derecho sobre el proyecto -> **Gradle -> Refresh Gradle Project**.
-* Ejecutá el luncher **sireco (Local)**
+* Para lanzar la aplicación:  botón derecho sobre ComedorApplication.java -> Run As : Java Application
 
 #### Codificacion y Formatter:
 
