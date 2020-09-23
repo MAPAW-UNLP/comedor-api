@@ -17,7 +17,7 @@ $ git clone https://github.com/MAPAW-UNLP/comedor-api.git
 ```
 
 
-#### Construir, Levantar la aplicación y Correr los tests:
+#### Construir y Levantar la aplicación :
 
 Es necesario apuntar la variable de entorno **JAVA_HOME** a la version 1.8 para poder compilar.
 
