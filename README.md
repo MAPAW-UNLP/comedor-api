@@ -6,8 +6,10 @@ La siguiente guía te permitirá descargar este proyecto y levantar la aplicaci�
 
 #### Requisitos
 
-* JDK 1.8 
+* JDK 1.8   (https://www.oracle.com/ar/java/technologies/javase/javase-jdk8-downloads.html#license-lightbox)
 * Git (Opciones: Git for Windows o Cygwin)
+
+
 
 #### Descarga del proyecto
 
@@ -38,6 +40,8 @@ Luego:
 ```bash
 $ $JAVA_HOME/bin/java -jar build/libs/comedor-api.jar
 ```
+##### Para desarrollar :
+* Eclipse (https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2020-09/R/eclipse-inst-jre-win64.exe)
 
 Si usas eclipse:
 
