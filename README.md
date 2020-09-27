@@ -47,7 +47,7 @@ Si usas eclipse:
 
 * Importa el repositorio como un proyecto Gradle, dejando la opción Gradle wrapper.
 * Para descargar las dependencias, botón derecho sobre el proyecto -> **Gradle -> Refresh Gradle Project**.
-* Para lanzar la aplicación:  botón derecho sobre ComedorApplication.java -> Run As : Java Application
+* Para lanzar la aplicación:  Correr launcher -> Comedor-API (Mem)
 
 #### Codificacion y Formatter:
 
