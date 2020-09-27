@@ -18,6 +18,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.2'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.2'
+	
+	
 	
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
