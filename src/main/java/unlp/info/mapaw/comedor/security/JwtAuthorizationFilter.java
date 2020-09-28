@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import unlp.info.mapaw.comedor.domain.User;
 import unlp.info.mapaw.comedor.dto.UserDTO;
 import unlp.info.mapaw.comedor.service.UserService;
 import unlp.info.mapaw.comedor.utils.Constants;
@@ -37,7 +38,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		final String token = authorizationHeader.replace(Constants.TOKEN_BEARER_PREFIX + " ", "");
 
 		long id = TokenProvider.getId(token);
-		UserDTO user = userService.getById(id);
+		SecuredUser user = userService.getById(id);
 
 		UsernamePasswordAuthenticationToken authenticationToken = TokenProvider.getAuthentication(token, user);
 		SecurityContextHolder.getContext().setAuthentication(authenticationToken);

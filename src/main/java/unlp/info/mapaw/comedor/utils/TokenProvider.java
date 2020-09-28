@@ -14,6 +14,7 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import unlp.info.mapaw.comedor.dto.UserDTO;
+import unlp.info.mapaw.comedor.security.SecuredUser;
 
 public class TokenProvider {
 
@@ -21,14 +22,13 @@ public class TokenProvider {
 	}
 
 	public static String generateToken(Authentication authentication) {
-		authentication.getAuthorities();
-		UserDTO user = (UserDTO) authentication.getPrincipal();
-		return Jwts.builder().claim("id", user.getId()).claim("fullName", user.getFullName())
-				.claim("dni", user.getDni()).claim("role", "ROLE_" + user.getRole())
+		SecuredUser securedUser = (SecuredUser) authentication.getPrincipal();
+		return Jwts.builder().claim("id", securedUser.getUser().getId()).claim("fullName", securedUser.getUser().getFullname())
+				.claim("dni", securedUser.getUser().getDni()).claim("role", "ROLE_" + securedUser.getUser().getRole().name())
 				.signWith(SignatureAlgorithm.HS256, Constants.SIGNING_KEY).compact();
 	}
 
-	public static UsernamePasswordAuthenticationToken getAuthentication(final String token, final UserDTO userDetails) {
+	public static UsernamePasswordAuthenticationToken getAuthentication(final String token, final SecuredUser userDetails) {
 		final JwtParser jwtParser = Jwts.parser().setSigningKey(Constants.SIGNING_KEY);
 		final Jws<Claims> claimsJws = jwtParser.parseClaimsJws(token);
 		final Claims claims = claimsJws.getBody();
