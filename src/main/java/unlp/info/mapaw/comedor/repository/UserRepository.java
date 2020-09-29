@@ -11,7 +11,7 @@ import unlp.info.mapaw.comedor.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User findByUsername(String username);
+	User findByDni(String dni);
 
 	User findById(long id);
 

@@ -19,8 +19,8 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public SecuredUser loadUserByUsername(String userName) throws UsernameNotFoundException {
-		final User retrievedUser = userRepository.findByUsername(userName);
+	public SecuredUser loadUserByUsername(String username) throws UsernameNotFoundException {
+		final User retrievedUser = userRepository.findByDni(username);
 		if (retrievedUser == null) {
 			throw new UsernameNotFoundException("Invalid username or password");
 		}
@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
 	private SecuredUser createDTOFormEntity(User user) {
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 		authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
-		SecuredUser securedUser = new SecuredUser(user.getUsername(), user.getPassword(), authorities, user);
+		SecuredUser securedUser = new SecuredUser(user.getDni(), user.getPassword(), authorities, user);
 		return securedUser;
 	}
 }

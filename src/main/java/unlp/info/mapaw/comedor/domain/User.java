@@ -22,9 +22,6 @@ import unlp.info.mapaw.comedor.enums.UserConditionEnum;
 public class User extends AbstractEntity {
 
 	@Column
-	private String username;
-
-	@Column
 	private String fullname;
 
 	@Column
@@ -51,14 +48,6 @@ public class User extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	@Column
 	private UserConditionEnum condition;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	public String getFullname() {
 		return fullname;

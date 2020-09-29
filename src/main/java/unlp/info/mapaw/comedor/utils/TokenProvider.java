@@ -13,7 +13,6 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import unlp.info.mapaw.comedor.dto.UserDTO;
 import unlp.info.mapaw.comedor.security.SecuredUser;
 
 public class TokenProvider {

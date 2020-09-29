@@ -9,9 +9,8 @@
 	<changeSet id="99.a" author="fiaccarino" logicalFilePath="user_data.xml">
 		<insert tableName="USER">  
         	<column  name="id"  valueComputed="SEQ_USER.NEXTVAL"/>
-        	<column  name="username"  value="user1"/>
+        	<column  name="dni"  value="99999999"/>
         	<column  name="password"  value="$2a$04$GJ85Ihcglhbqac2zc3z3A.C3v55FMmN8.qGQ8FlNBCuyLtQ5/TyMO"/>
-        	<column  name="dni"  value="33999222"/>
         	<column  name="fullname"  value="Roberto Carlos"/>
         	<column  name="role"  value="CLIENT"/>
         	<column  name="email"  value="roberto.carlos@gmail.com"/>
