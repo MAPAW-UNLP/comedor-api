@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="03.a" author="fiaccarino" logicalFilePath="03_user.xml">
+		<createTable tableName="USER">
+			<column name="id" type="NUMBER(20)" />
+			<column name="username" type="VARCHAR2(100)" />
+			<column name="fullname" type="VARCHAR2(100)" />
+			<column name="password" type="VARCHAR2(200)" />
+			<column name="dni" type="VARCHAR2(10)" />
+			<column name="role" type="VARCHAR2(20)" />
+			<column name="faculty" type="VARCHAR2(100)">
+				<constraints nullable="true" />  
+			</column>
+			<column name="id_kitchen_site" type="NUMBER(20)" >
+				<constraints nullable="true" />  
+			</column>
+			<column name="email" type="VARCHAR2(100)" >
+				<constraints nullable="true" />  
+			</column>
+			<column name="condition" type="VARCHAR2(20)" >
+				<constraints nullable="true" />  
+			</column>
+		</createTable>
+	</changeSet>
+		<changeSet id="03.b" author="fiaccarino" logicalFilePath="03_user.xml">
+		<createSequence sequenceName="SEQ_USER" cycle="false" minValue="1"
+			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+	</changeSet>
+</databaseChangeLog>

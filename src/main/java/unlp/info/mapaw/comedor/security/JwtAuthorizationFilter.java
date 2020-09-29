@@ -13,8 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import unlp.info.mapaw.comedor.domain.User;
-import unlp.info.mapaw.comedor.dto.UserDTO;
 import unlp.info.mapaw.comedor.service.UserService;
 import unlp.info.mapaw.comedor.utils.Constants;
 import unlp.info.mapaw.comedor.utils.TokenProvider;

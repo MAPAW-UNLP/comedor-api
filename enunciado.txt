@@ -1,0 +1,23 @@
+ Comedor universitario - gestión de tickets
+
+Actualmente los tickets se compran en una sede determinada de forma semanal: la persona debe comprar todos los tickets para una semana la semana previa. Cada ticket tiene un único menú fijo y es válido solamente en la sede que se compro: se puede comer en la sede o retirar en forma de vianda. 
+
+El objetivo del proyecto es desarrollar un sistema para gestionar los tickets del comedor, que le permita a los clientes (estudiantes, docentes y no docentes) comprar los tickets dia a dia, eligiendo diferentes menús y  las sedes en las cuales se retiran. 
+
+Existen dos roles principales en el sistema: los clientes que compran los tickets y el personal del comedor que se encarga de la gestión de los tickets comprados y de los menús disponibles.  
+
+Clientes
+Login en el sistema como cliente. Un cliente posee nombre, DNI, email, condición (estudiante, docente, o no docente) y Facultad. 
+Comprar tickets: Cada ticket se compone de un menú, precio, fecha, tipo (comedor o vianda) y sede en la que se consume/retira. El cliente debe poder comprar múltiples tickets según los días que hayan sido habilitados por el personal del comedor y considerando que sólo se permite un menú por día. 
+Visualizar tickets pendientes.
+Visualizar menús ofrecidos con la posibilidad de calificarlos.
+
+Personal
+Alta de menús ingresando nombre, lista de componentes con nombre (entrada, plato principal, postre, etc.) que verán los clientes, si es apto para celíacos, si es apto para vegetarianos, e imágenes (opcional). También se requiere la lista de ingredientes necesarios para prepararlo, cada uno con nombre, cantidad y unidad de medida. Esta lista solo debe ser visible para el personal.
+Habilitar menús para la compra indicando por cada menú las fechas en la que estará disponible, su precio, y la cantidad de porciones. El stock de cada menú para cada día debe ir actualizándose a medida que los clientes compran.
+Visualizar para una fecha determinada las cantidades compradas de cada menú, pudiendo hacer el desglose por sede. Además debe mostrarse la lista de ingredientes necesarios con las cantidades correspondientes a la cantidad de porciones a preparar.
+(DESEADO) Visualizar resumen de ventas de un rango de fechas determinado. Se debe incluir:
+Cantidad de tickets vendidos por cada día del periodo, con la posibilidad de filtrar por sede. A su vez, por cada día debe poder verse la cantidad de cada menú.
+Cantidad total de tickets vendidos por sede separando por tipo (comedor o vianda).
+Cantidad de clientes que compraron tickets agrupados por Facultad.
+Corroborar si un usuario tiene un ticket válido para una fecha determinada.
