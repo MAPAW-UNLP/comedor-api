@@ -1,6 +1,7 @@
 package unlp.info.mapaw.comedor.security;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -47,6 +48,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 		String token = TokenProvider.generateToken(authResult);
+		response.setContentType("application/json");
+		response.getWriter().append(jsonResponse(token));
 		response.addHeader(Constants.HEADER_AUTHORIZATION_KEY, Constants.TOKEN_BEARER_PREFIX + " " + token);
+	}
+	
+	private String jsonResponse(String token) {
+		return "{\"accessToken\": \"" + token.toString() +"\" }";
 	}
 }
