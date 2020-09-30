@@ -8,6 +8,7 @@
 	<include relativeToChangelogFile="true" file="01_faculty.xml" />
 	<include relativeToChangelogFile="true" file="02_kitchen_site.xml" />
 	<include relativeToChangelogFile="true" file="03_user.xml" />
+	<include relativeToChangelogFile="true" file="04_client_faculty.xml" />
 	<include relativeToChangelogFile="true" file="user_data.xml" />
 
 </databaseChangeLog>
