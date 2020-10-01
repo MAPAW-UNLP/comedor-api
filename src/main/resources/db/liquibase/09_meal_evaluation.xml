@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="09.a" author="fiaccarino" logicalFilePath="09_menu.xml">
+		<createTable tableName="MEAL_EVALUATION">
+			<column name="id" type="NUMBER(20)" />
+			<column name="id_meal" type="NUMBER(20)" />
+			<column name="id_client" type="NUMBER(20)" />
+			<column name="comments" type="VARCHAR2(400)" />
+			<column name="score" type="VARCHAR2(30)" />
+		</createTable>
+	</changeSet>
+		<changeSet id="08.b" author="fiaccarino" logicalFilePath="08_menu.xml">
+		<createSequence sequenceName="SEQ_MENU" cycle="false" minValue="1"
+			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+	</changeSet>
+</databaseChangeLog>

@@ -44,20 +44,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// Configuración de la clase que recupera los usuarios y algorito para procesar las passwords
+		// Configuración de la clase que recupera los usuarios y algorito para procesar
+		// las passwords
 		auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.cors().and()
-				.csrf().disable()
-				.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll().antMatchers("/api/home").permitAll()
-				.anyRequest().authenticated().and()
+		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
+				.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
+				.antMatchers("/api/home").permitAll().antMatchers("/h2-console/**").permitAll().anyRequest()
+				.authenticated().and()
 				.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
 						UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(jwtAuthorizationFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		
+		httpSecurity.headers().frameOptions().sameOrigin();
 	}
 }

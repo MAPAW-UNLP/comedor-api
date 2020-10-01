@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="07.a" author="fiaccarino" logicalFilePath="07_meal.xml">
+		<createTable tableName="MEAL">
+			<column name="id" type="NUMBER(20)" />
+			<column name="name" type="VARCHAR2(30)" />
+			<column name="suitable_for_vegetarians" type="NUMBER(1)" />
+			<column name="suitable_for_celiacs" type="NUMBER(1)" />
+		</createTable>
+	</changeSet>
+		<changeSet id="07.b" author="fiaccarino" logicalFilePath="07_meal.xml">
+		<createSequence sequenceName="SEQ_MEAL" cycle="false" minValue="1"
+			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+	</changeSet>
+</databaseChangeLog>

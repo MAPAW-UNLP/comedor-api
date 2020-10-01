@@ -9,6 +9,11 @@
 	<include relativeToChangelogFile="true" file="02_kitchen_site.xml" />
 	<include relativeToChangelogFile="true" file="03_user.xml" />
 	<include relativeToChangelogFile="true" file="04_client_faculty.xml" />
+	<include relativeToChangelogFile="true" file="05_ingredient.xml" />
+	<include relativeToChangelogFile="true" file="06_dish.xml" />
+	<include relativeToChangelogFile="true" file="07_meal.xml" />
+	<include relativeToChangelogFile="true" file="08_menu.xml" />
+	<include relativeToChangelogFile="true" file="09_meal_evaluation.xml" />
 	<include relativeToChangelogFile="true" file="user_data.xml" />
 
 </databaseChangeLog>
