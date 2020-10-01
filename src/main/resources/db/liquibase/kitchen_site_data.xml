@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="97.a" author="fiaccarino" logicalFilePath="kitchen_site_data.xml">
+    	<insert tableName="KITCHEN_SITE">  
+        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="name"  value="Bosque Oeste"/>
+    	</insert> 
+    	<insert tableName="KITCHEN_SITE">  
+        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="name"  value="Bosque Este"/>
+    	</insert>
+    	<insert tableName="KITCHEN_SITE">  
+        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="name"  value="ATULP"/>
+    	</insert>
+    	<insert tableName="KITCHEN_SITE">  
+        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="name"  value="Club Everton"/>
+    	</insert> 
+	</changeSet>
+</databaseChangeLog>

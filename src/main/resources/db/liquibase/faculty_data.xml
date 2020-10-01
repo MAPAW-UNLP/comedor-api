@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="98.a" author="fiaccarino" logicalFilePath="faculty_data.xml">
+		<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Arquitectura y Urbanismo"/>
+    	</insert>
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Bellas Artes"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Agrarias y Forestales"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Astronómicas y Geofísicas"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Exactas"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Jurídicas y Sociales"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Médicas"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Naturales y Museo"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ciencias Veterinarias"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Humanidades y Ciencias de la Educación"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Informática"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Ingeniería"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Odontología"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Periodismo y Comunicación Social"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Psicología"/>
+    	</insert>  
+    	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Facultad de Trabajo Social"/>
+    	</insert>  
+    	 	<insert tableName="FACULTY">  
+        	<column  name="id"  valueComputed="SEQ_FACULTY.NEXTVAL"/>
+        	<column  name="name"  value="Escuela Universitaria de Recursos Humanos del Equipo de Salud"/>
+    	</insert>  
+	</changeSet>
+</databaseChangeLog>
