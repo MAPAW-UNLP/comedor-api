@@ -11,6 +11,7 @@
 			<column name="id" type="NUMBER(20)" />
 			<column name="name" type="VARCHAR2(30)" />
 			<column name="id_meal" type="NUMBER(20)" />
+			<column name="type" type="VARCHAR2(30)" />
 			
 		</createTable>
 	</changeSet>
