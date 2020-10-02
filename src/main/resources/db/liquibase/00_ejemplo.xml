@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="00.a" author="fiaccarino" logicalFilePath="00_ejemplo.xml">
+		<createTable tableName="EJEMPLO">
+			<column name="id" type="NUMBER(20)" />
+			<column name="name" type="VARCHAR2(100)" />
+		</createTable>
+	</changeSet>
+	<changeSet id="00.b" author="fiaccarino" logicalFilePath="01_faculty.xml">
+		<createSequence sequenceName="SEQ_EJEMPLO" cycle="false" minValue="1"
+			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+	</changeSet>
+	<changeSet id="00.c" author="fiaccarino" logicalFilePath="00_ejemplo.xml">
+		<insert tableName="EJEMPLO">  
+        	<column  name="id"  valueComputed="SEQ_EJEMPLO.NEXTVAL"/>
+        	<column  name="name"  value="Ejemplo 1"/>
+    	</insert>
+    	<insert tableName="EJEMPLO">  
+        	<column  name="id"  valueComputed="SEQ_EJEMPLO.NEXTVAL"/>
+        	<column  name="name"  value="Ejemplo 2"/>
+    	</insert>  
+	</changeSet>
+</databaseChangeLog>

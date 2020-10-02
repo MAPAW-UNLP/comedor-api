@@ -55,11 +55,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/doc/**").permitAll(); // path de open-api
 		httpSecurity.authorizeRequests().antMatchers("/api/home").permitAll().antMatchers("/h2-console/**").permitAll();
-		httpSecurity.authorizeRequests().anyRequest().authenticated().and()
-				.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
+		//httpSecurity.authorizeRequests().anyRequest().authenticated();
+		httpSecurity.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
 						UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(jwtAuthorizationFilterBean(), UsernamePasswordAuthenticationFilter.class);
-
 		httpSecurity.headers().frameOptions().sameOrigin();
 	}
 }
