@@ -52,13 +52,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
-				.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
-				.antMatchers("/api/home").permitAll().antMatchers("/h2-console/**").permitAll().anyRequest()
-				.authenticated().and()
+				.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
+		httpSecurity.authorizeRequests().antMatchers("/doc/**").permitAll(); // path de open-api
+		httpSecurity.authorizeRequests().antMatchers("/api/home").permitAll().antMatchers("/h2-console/**").permitAll();
+		httpSecurity.authorizeRequests().anyRequest().authenticated().and()
 				.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
 						UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(jwtAuthorizationFilterBean(), UsernamePasswordAuthenticationFilter.class);
-		
+
 		httpSecurity.headers().frameOptions().sameOrigin();
 	}
 }

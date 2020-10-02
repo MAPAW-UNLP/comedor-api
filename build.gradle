@@ -29,7 +29,11 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-		//para integration-test y contexto en memoria
+	
+	//Open Api
+	implementation 'org.springdoc:springdoc-openapi-ui:1.3.4'
+	
+	//para integration-test y contexto en memoria
 	implementation 'org.liquibase:liquibase-core:3.9.0'
 	runtime 'com.h2database:h2'
 }
