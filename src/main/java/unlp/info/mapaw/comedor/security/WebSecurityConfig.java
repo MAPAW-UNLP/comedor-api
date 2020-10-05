@@ -51,8 +51,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().cors().and()
-				.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
+		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		httpSecurity.cors();
+		httpSecurity.csrf().disable();
+		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/doc/**").permitAll(); // path de open-api
 		httpSecurity.authorizeRequests().antMatchers("/api/home").permitAll().antMatchers("/h2-console/**").permitAll();
 		//httpSecurity.authorizeRequests().anyRequest().authenticated();
