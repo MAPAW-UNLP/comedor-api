@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		httpSecurity.cors();
+		httpSecurity.cors().disable();
 		httpSecurity.csrf().disable();
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/doc/**").permitAll(); // path de open-api
