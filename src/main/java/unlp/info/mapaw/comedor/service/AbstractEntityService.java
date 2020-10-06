@@ -33,7 +33,7 @@ public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends A
 		return createDTO(entity);
 	}
 	
-	private DTO createDTO(T entity) {
+	protected DTO createDTO(T entity) {
 		DTO dto = createEmptyDTO();
 		dto.setId(entity.getId());
 		this.addCustomPropertiesToDTO(entity, dto);

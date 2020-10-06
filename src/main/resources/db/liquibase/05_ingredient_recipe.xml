@@ -6,17 +6,16 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-	<changeSet id="06.a" author="fiaccarino" logicalFilePath="06_dish.xml">
-		<createTable tableName="DISH">
+	<changeSet id="05.a" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
+		<createTable tableName="INGREDIENT_RECIPE">
 			<column name="id" type="NUMBER(20)" />
+			<column name="name" type="VARCHAR2(30)" />
+			<column name="measurement" type="VARCHAR2(10)" />
 			<column name="id_dish_recipe" type="NUMBER(20)" />
-			<column name="id_meal" type="NUMBER(20)" />
-			<column name="type" type="VARCHAR2(30)" />
-			
 		</createTable>
 	</changeSet>
-		<changeSet id="06.b" author="fiaccarino" logicalFilePath="06_dish.xml">
-		<createSequence sequenceName="SEQ_DISH" cycle="false" minValue="1"
+	<changeSet id="05.b" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
+		<createSequence sequenceName="SEQ_INGREDIENT_RECIPE" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
 	</changeSet>
 </databaseChangeLog>

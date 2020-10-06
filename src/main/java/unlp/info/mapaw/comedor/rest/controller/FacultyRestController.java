@@ -16,7 +16,7 @@ import unlp.info.mapaw.comedor.dto.FacultyDTO;
 import unlp.info.mapaw.comedor.rest.controller.abstractClass.AbstractRestController;
 import unlp.info.mapaw.comedor.service.FacultyService;
 
-@Tag(name = "Faculty", description = "API de Facultad")
+@Tag(name = "Faculty", description = "API de Faculty")
 @RestController
 @RequestMapping("/api/faculty")
 public class FacultyRestController extends AbstractRestController<FacultyDTO> {

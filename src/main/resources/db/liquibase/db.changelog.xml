@@ -11,7 +11,9 @@
 	<include relativeToChangelogFile="true" file="02_kitchen_site.xml" />
 	<include relativeToChangelogFile="true" file="03_user.xml" />
 	<include relativeToChangelogFile="true" file="04_client_faculty.xml" />
+	<include relativeToChangelogFile="true" file="05_ingredient_recipe.xml" />
 	<include relativeToChangelogFile="true" file="05_ingredient.xml" />
+	<include relativeToChangelogFile="true" file="06_dish_recipe.xml" />
 	<include relativeToChangelogFile="true" file="06_dish.xml" />
 	<include relativeToChangelogFile="true" file="07_meal.xml" />
 	<include relativeToChangelogFile="true" file="08_menu.xml" />
@@ -19,5 +21,8 @@
 	<include relativeToChangelogFile="true" file="faculty_data.xml" />
 	<include relativeToChangelogFile="true" file="kitchen_site_data.xml" />
 	<include relativeToChangelogFile="true" file="user_data.xml" />
+	<include relativeToChangelogFile="true" file="data_ingredient_dish_recipe.xml" />
+	
+	
 
 </databaseChangeLog>
