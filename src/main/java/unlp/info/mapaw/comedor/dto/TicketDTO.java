@@ -3,11 +3,9 @@ package unlp.info.mapaw.comedor.dto;
 import unlp.info.mapaw.comedor.enums.TicketTypeEnum;
 
 public class TicketDTO extends AbstractDTO {
-	
+
 	private MenuDTO menu;
 
-	private UserDTO client;
-	
 	private TicketTypeEnum type;
 
 	public MenuDTO getMenu() {
@@ -16,14 +14,6 @@ public class TicketDTO extends AbstractDTO {
 
 	public void setMenu(MenuDTO menu) {
 		this.menu = menu;
-	}
-
-	public UserDTO getClient() {
-		return client;
-	}
-
-	public void setClient(UserDTO client) {
-		this.client = client;
 	}
 
 	public TicketTypeEnum getType() {
