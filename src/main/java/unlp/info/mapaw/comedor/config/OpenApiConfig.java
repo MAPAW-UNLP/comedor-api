@@ -1,4 +1,4 @@
-package unlp.info.mapaw.comedor.domain.config;
+package unlp.info.mapaw.comedor.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
