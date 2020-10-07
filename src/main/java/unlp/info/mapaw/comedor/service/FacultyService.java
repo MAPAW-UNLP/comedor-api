@@ -18,5 +18,16 @@ public class FacultyService extends AbstractEntityService<FacultyDTO, Faculty>{
 	protected FacultyDTO createEmptyDTO() {
 		return new FacultyDTO();
 	}
+
+	@Override
+	protected Faculty addCustomPropertiesToEntity(FacultyDTO dto, Faculty entity) {
+		entity.setName(dto.getName());
+		return entity;
+	}
+
+	@Override
+	protected Faculty createEmptyEntity() {
+		return new Faculty();
+	}
 	
 }

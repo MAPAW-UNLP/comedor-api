@@ -18,7 +18,11 @@ public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends A
 	
 	protected abstract DTO addCustomPropertiesToDTO(T entity, DTO dto);
 	
+	protected abstract T addCustomPropertiesToEntity(DTO dto, T entity);
+	
 	protected abstract DTO createEmptyDTO();
+	
+	protected abstract T createEmptyEntity();
 	
 	public List<DTO> getAll(Class<T> entityClass) {
 		List<DTO> lista = new ArrayList<DTO>();
@@ -38,5 +42,27 @@ public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends A
 		dto.setId(entity.getId());
 		this.addCustomPropertiesToDTO(entity, dto);
 		return dto;
+	}
+	
+	public DTO save(DTO dto) {
+		T entity = this.createEntityFromDTO(dto);
+		entity = crudService.save(entity);
+		return createDTO(entity);
+	}
+
+	protected T createEntityFromDTO(DTO dto) {
+		T entity = this.createEmptyEntity();
+		this.addCustomPropertiesToEntity(dto, entity);
+		return entity;
+	}
+	
+	public DTO update(Class<T> entityClass, DTO dto) {
+		T entity = this.crudService.findOne(entityClass, dto.getId());
+		crudService.save(entity);
+		return createDTO(entity);
+	}
+	
+	public void delete(Class<T> entityClass, Long id) {
+		crudService.delete(entityClass, id);
 	}
 }

@@ -20,4 +20,16 @@ public class IngredientRecipeService extends AbstractEntityService<IngredientRec
 		return new IngredientRecipeDTO();
 	}
 
+	@Override
+	protected IngredientRecipe addCustomPropertiesToEntity(IngredientRecipeDTO dto, IngredientRecipe entity) {
+		entity.setMeasurement(dto.getMeasurement());
+		entity.setName(dto.getName());
+		return entity;
+	}
+
+	@Override
+	protected IngredientRecipe createEmptyEntity() {
+		return new IngredientRecipe();
+	}
+
 }

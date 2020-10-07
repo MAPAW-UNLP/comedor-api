@@ -45,5 +45,19 @@ public class AbstractCRUDService {
 	private <T extends AbstractEntity> List<T> findAll(CriteriaQuery<T> q) {
 		return em.createQuery(q).getResultList();
 	}
+	
+	@Transactional(readOnly = false)
+	public <T extends AbstractEntity> T save(T entity) {
+		if (entity.getId() > 0) {
+			entity = em.merge(entity);
+		}
+		return abstractJPARepository.save(entity);
+	}
+	
+	@Transactional(readOnly = false)
+	public <T extends AbstractEntity> void delete(Class<T> entityClass, long id) {
+		abstractJPARepository.delete(em.getReference(entityClass, id));
+
+	}
 
 }

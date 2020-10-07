@@ -18,4 +18,15 @@ public class EjemploService extends AbstractEntityService<EjemploDTO, Ejemplo> {
 	protected EjemploDTO createEmptyDTO() {
 		return new EjemploDTO();
 	}
+
+	@Override
+	protected Ejemplo addCustomPropertiesToEntity(EjemploDTO dto, Ejemplo entity) {
+		entity.setName(dto.getName());
+		return entity;
+	}
+
+	@Override
+	protected Ejemplo createEmptyEntity() {
+		return new Ejemplo();
+	}
 }
