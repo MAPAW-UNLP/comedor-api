@@ -18,5 +18,16 @@ public class KitchenSiteService extends AbstractEntityService<KitchenSiteDTO, Ki
 	protected KitchenSiteDTO createEmptyDTO() {
 		return new KitchenSiteDTO();
 	}
+
+	@Override
+	protected KitchenSite addCustomPropertiesToEntity(KitchenSiteDTO dto, KitchenSite entity) {
+		entity.setName(dto.getName());
+		return entity;
+	}
+
+	@Override
+	protected KitchenSite createEmptyEntity() {
+		return new KitchenSite();
+	}
 	
 }

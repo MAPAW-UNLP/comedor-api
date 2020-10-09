@@ -10,11 +10,19 @@
 		<insert tableName="USER">  
         	<column  name="id"  valueComputed="SEQ_USER.NEXTVAL"/>
         	<column  name="dni"  value="99999999"/>
-        	<column  name="password"  value="$2a$04$GJ85Ihcglhbqac2zc3z3A.C3v55FMmN8.qGQ8FlNBCuyLtQ5/TyMO"/>
-        	<column  name="fullname"  value="Roberto Carlos"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Cliente 1"/>
         	<column  name="role"  value="CLIENT"/>
-        	<column  name="email"  value="roberto.carlos@gmail.com"/>
+        	<column  name="email"  value="cliente@gmail.com"/>
         	<column  name="condition"  value="ESTUDIANTE"/>
+    	</insert>
+    	<insert tableName="USER">  
+        	<column  name="id"  valueComputed="SEQ_USER.NEXTVAL"/>
+        	<column  name="dni"  value="88888888"/>
+        	<column  name="password"  value="$2y$12$hDo/ktgwHe42mDluxpYo4OlRzGHmi2ciVHElugRoYjcGEdQcEDzt2"/>
+        	<column  name="fullname"  value="Empleado 1"/>
+        	<column  name="role"  value="EMPLOYEE"/>
+        	<column  name="email"  value="employees@gmail.com"/>
     	</insert>  
 	</changeSet>
 </databaseChangeLog>

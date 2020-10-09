@@ -6,33 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import unlp.info.mapaw.comedor.domain.KitchenSite;
-import unlp.info.mapaw.comedor.dto.KitchenSiteDTO;
+import unlp.info.mapaw.comedor.domain.DishRecipe;
+import unlp.info.mapaw.comedor.dto.DishRecipeDTO;
 import unlp.info.mapaw.comedor.rest.controller.abstractClass.AbstractRestController;
-import unlp.info.mapaw.comedor.service.KitchenSiteService;
+import unlp.info.mapaw.comedor.service.DishRecipeService;
 
-@Tag(name = "KitchenSite", description = "API de Kitchen Site")
+@Tag(name = "Dish Recipe", description = "API de Dish Recipe")
 @RestController
-@RequestMapping("/api/kitchenSite")
-public class KitchenSiteRestController extends AbstractRestController<KitchenSiteDTO> {
+@RequestMapping("/api/dishRecipe")
+public class DichRecipeRestController extends AbstractRestController<DishRecipeDTO> {
 
 	@Autowired
-	private KitchenSiteService service;
+	private DishRecipeService service;
 	
 	@Override
-	public ResponseEntity<Collection<KitchenSiteDTO>> getAll() {
+	public ResponseEntity<Collection<DishRecipeDTO>> getAll() {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.getAll(KitchenSite.class));
+		        .body(service.getAll(DishRecipe.class));
 	}
 
 	@Override
-	public ResponseEntity<KitchenSiteDTO> getById(@PathVariable("id") Long id) {
+	public ResponseEntity<DishRecipeDTO> getById(Long id) {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.get(KitchenSite.class, id));
-	}
+		        .body(service.get(DishRecipe.class, id));
+	}	
 }

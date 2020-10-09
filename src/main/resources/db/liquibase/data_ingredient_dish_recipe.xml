@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="96.a" author="fiaccarino" logicalFilePath="data_ingredient_dish_recipe.xml">
+		<insert tableName="DISH_RECIPE">  
+			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
+			<column name="name" value="Ensalada de Lechuga y Tomate" />	
+		</insert>
+		<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Lechuga" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Ensalada de Lechuga y Tomate')" />
+    	</insert>
+    	<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Tomate" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Ensalada de Lechuga y Tomate')" />
+    	</insert>
+    	<insert tableName="DISH_RECIPE">  
+			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
+			<column name="name" value="Milanesa de pollo" />	
+		</insert>
+		<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Pechuga de pollo" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Milanesa de pollo')" />
+    	</insert>
+    	<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Pan rallado" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Milanesa de pollo')" />
+    	</insert>
+    	<insert tableName="DISH_RECIPE">  
+			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
+			<column name="name" value="Huevo frito" />	
+		</insert>
+		<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Huevo" />
+			<column name="measurement" value="unity" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Huevo frito')" />
+    	</insert>
+    	<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Aceite girasol" />
+			<column name="measurement" value="cm3" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Huevo frito')" />
+    	</insert>
+    	<insert tableName="DISH_RECIPE">  
+			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
+			<column name="name" value="Papas fritas" />	
+		</insert>
+		<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Papa" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Papas fritas')" />
+    	</insert>
+    	<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Aceite girasol" />
+			<column name="measurement" value="cm3" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Papas fritas')" />
+    	</insert>
+    	<insert tableName="DISH_RECIPE">  
+			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
+			<column name="name" value="Pollo al horno" />	
+		</insert>
+		<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Pollo" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Pollo al horno')" />
+    	</insert>
+    	<insert tableName="DISH_RECIPE">  
+			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
+			<column name="name" value="Pure de Papa" />	
+		</insert>
+		<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Papa" />
+			<column name="measurement" value="kg" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Pure de Papa')" />
+    	</insert>
+    	<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Leche" />
+			<column name="measurement" value="cm3" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Pure de Papa')" />
+    	</insert>
+    	<insert tableName="INGREDIENT_RECIPE">  
+        	<column name="id" valueComputed="SEQ_INGREDIENT_RECIPE.NEXTVAL" />
+			<column name="name" value="Manteca" />
+			<column name="measurement" value="g" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Pure de Papa')" />
+    	</insert>
+    	
+	</changeSet>
+</databaseChangeLog>
