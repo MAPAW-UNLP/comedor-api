@@ -18,7 +18,7 @@ import unlp.info.mapaw.comedor.service.MealService;
 
 @Tag(name = "Meal", description = "API de combo")
 @RestController
-@RequestMapping("/api/combo")
+@RequestMapping("/api/Meal")
 public class MealRestController extends AbstractRestController<MealDTO>{
 	
 	@Autowired
