@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +35,11 @@ public class DichRecipeRestController extends AbstractRestController<DishRecipeD
 	public ResponseEntity<DishRecipeDTO> getById(Long id) {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 		        .body(service.get(DishRecipe.class, id));
-	}	
+	}
+	
+	@PutMapping(value="/save", consumes = { "application/json" }, produces = { "application/json" })
+	public ResponseEntity<DishRecipeDTO> save( @RequestBody DishRecipeDTO dto) {
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+		        .body(service.save(dto));
+	}
 }
