@@ -19,7 +19,7 @@ public class DishRecipe extends AbstractEntity {
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name = "id_dish_recipe")
-	private List<IngredientRecipe> ingredients = new ArrayList<>();
+	private List<Ingredient> ingredients = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -29,11 +29,11 @@ public class DishRecipe extends AbstractEntity {
 		this.name = name;
 	}
 
-	public List<IngredientRecipe> getIngredients() {
+	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(List<IngredientRecipe> ingredients) {
+	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 }

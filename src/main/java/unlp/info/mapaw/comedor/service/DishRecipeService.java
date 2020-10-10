@@ -4,21 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.DishRecipe;
-import unlp.info.mapaw.comedor.domain.IngredientRecipe;
+import unlp.info.mapaw.comedor.domain.Ingredient;
 import unlp.info.mapaw.comedor.dto.DishRecipeDTO;
-import unlp.info.mapaw.comedor.dto.IngredientRecipeDTO;
+import unlp.info.mapaw.comedor.dto.IngredientDTO;
 
 @Service
 public class DishRecipeService extends AbstractEntityService<DishRecipeDTO, DishRecipe> {
-	
+
 	@Autowired
-	private IngredientRecipeService ingredientService;
-	
+	private IngredientService ingredientService;
 
 	@Override
 	protected DishRecipeDTO addCustomPropertiesToDTO(DishRecipe entity, DishRecipeDTO dto) {
 		dto.setName(entity.getName());
-		for (IngredientRecipe ingredient : entity.getIngredients()) {
+		for (Ingredient ingredient : entity.getIngredients()) {
 			dto.getIngredients().add(ingredientService.createDTO(ingredient));
 		}
 		return dto;
@@ -37,9 +36,9 @@ public class DishRecipeService extends AbstractEntityService<DishRecipeDTO, Dish
 	@Override
 	protected DishRecipe addCustomPropertiesToEntity(DishRecipeDTO dto, DishRecipe entity) {
 		entity.setName(dto.getName());
-		for (IngredientRecipeDTO ingredient : dto.getIngredients()) {
+		for (IngredientDTO ingredient : dto.getIngredients()) {
 			entity.getIngredients().add(ingredientService.createEntityFromDTO(ingredient));
 		}
 		return entity;
-	}	
+	}
 }

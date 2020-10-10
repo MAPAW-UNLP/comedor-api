@@ -7,7 +7,7 @@ public class DishRecipeDTO extends AbstractDTO {
 
 	private String name;
 
-	private List<IngredientRecipeDTO> ingredients = new ArrayList<>();
+	private List<IngredientDTO> ingredients = new ArrayList<>();
 
 	public String getName() {
 		return name;
@@ -17,11 +17,11 @@ public class DishRecipeDTO extends AbstractDTO {
 		this.name = name;
 	}
 
-	public List<IngredientRecipeDTO> getIngredients() {
+	public List<IngredientDTO> getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(List<IngredientRecipeDTO> ingredients) {
+	public void setIngredients(List<IngredientDTO> ingredients) {
 		this.ingredients = ingredients;
 	}
 }

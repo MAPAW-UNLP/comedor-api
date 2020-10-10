@@ -27,6 +27,8 @@ public class Meal extends AbstractEntity {
 	
 	@Column(name="suitable_for_celiacs")
 	private boolean suitableForCeliacs;
+	
+	private String observations;
 
 	public String getName() {
 		return name;
@@ -58,5 +60,13 @@ public class Meal extends AbstractEntity {
 
 	public void setSuitableForCeliacs(boolean suitableForCeliacs) {
 		this.suitableForCeliacs = suitableForCeliacs;
+	}
+
+	public String getObservations() {
+		return observations;
+	}
+
+	public void setObservations(String observations) {
+		this.observations = observations;
 	}
 }

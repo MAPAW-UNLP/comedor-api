@@ -36,6 +36,8 @@ dependencies {
 	//para integration-test y contexto en memoria
 	implementation 'org.liquibase:liquibase-core:3.9.0'
 	runtime 'com.h2database:h2'
+	
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.1'
 }
 
 test {

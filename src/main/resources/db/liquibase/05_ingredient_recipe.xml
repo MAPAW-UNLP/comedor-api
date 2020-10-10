@@ -11,7 +11,6 @@
 			<column name="id" type="NUMBER(20)" />
 			<column name="name" type="VARCHAR2(30)" />
 			<column name="measurement" type="VARCHAR2(10)" />
-			<column name="id_dish_recipe" type="NUMBER(20)" />
 		</createTable>
 	</changeSet>
 	<changeSet id="05.b" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
