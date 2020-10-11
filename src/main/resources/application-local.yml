@@ -1,0 +1,5 @@
+spring.datasource.driver-class-name: org.postgresql.Driver
+spring.datasource.dialect: org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.url: postgres://mfpcvwfsqgocvc:a7c318a503970517548875da76b00d47a66afea227dad97309215557f855efe1@ec2-52-44-166-58.compute-1.amazonaws.com:5432/d34qu7ttobh311
+spring.datasource.username: mfpcvwfsqgocvc
+spring.datasource.password: a7c318a503970517548875da76b00d47a66afea227dad97309215557f855efe1
