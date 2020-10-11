@@ -17,6 +17,6 @@
 	</changeSet>
 		<changeSet id="06.b" author="fiaccarino" logicalFilePath="06_dish.xml">
 		<createSequence sequenceName="SEQ_DISH" cycle="false" minValue="1"
-			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="false" cacheSize="0" />
 	</changeSet>
 </databaseChangeLog>

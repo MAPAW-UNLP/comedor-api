@@ -15,6 +15,6 @@
 	</changeSet>
 	<changeSet id="05.b" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
 		<createSequence sequenceName="SEQ_INGREDIENT_RECIPE" cycle="false" minValue="1"
-			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="false" cacheSize="0" />
 	</changeSet>
 </databaseChangeLog>
