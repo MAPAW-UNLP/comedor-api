@@ -8,19 +8,19 @@
 
 	<changeSet id="97.a" author="fiaccarino" logicalFilePath="kitchen_site_data.xml">
     	<insert tableName="KITCHEN_SITE">  
-        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="id"  valueSequenceNext="SEQ_KITCHEN_SITE"/>
         	<column  name="name"  value="Bosque Oeste"/>
     	</insert> 
     	<insert tableName="KITCHEN_SITE">  
-        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="id"  valueSequenceNext="SEQ_KITCHEN_SITE"/>
         	<column  name="name"  value="Bosque Este"/>
     	</insert>
     	<insert tableName="KITCHEN_SITE">  
-        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="id"  valueSequenceNext="SEQ_KITCHEN_SITE"/>
         	<column  name="name"  value="ATULP"/>
     	</insert>
     	<insert tableName="KITCHEN_SITE">  
-        	<column  name="id"  valueComputed="SEQ_KITCHEN_SITE.NEXTVAL"/>
+        	<column  name="id"  valueSequenceNext="SEQ_KITCHEN_SITE"/>
         	<column  name="name"  value="Club Everton"/>
     	</insert> 
 	</changeSet>
