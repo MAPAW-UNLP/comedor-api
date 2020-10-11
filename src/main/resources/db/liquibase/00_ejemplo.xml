@@ -18,12 +18,12 @@
 	</changeSet>
 	<changeSet id="00.c" author="fiaccarino" logicalFilePath="00_ejemplo.xml">
 		<insert tableName="EJEMPLO">  
-        	<column  name="id"  valueComputed="SEQ_EJEMPLO.NEXTVAL"/>
-        	<column  name="name"  value="Ejemplo 1"/>
+        	<column  name="id" valueSequenceNext="SEQ_EJEMPLO"/>
+        	<column  name="name" value="Ejemplo 1"/>
     	</insert>
     	<insert tableName="EJEMPLO">  
-        	<column  name="id"  valueComputed="SEQ_EJEMPLO.NEXTVAL"/>
-        	<column  name="name"  value="Ejemplo 2"/>
+        	<column  name="id" valueSequenceNext="SEQ_EJEMPLO"/>
+        	<column  name="name" value="Ejemplo 2"/>
     	</insert>  
 	</changeSet>
 </databaseChangeLog>
