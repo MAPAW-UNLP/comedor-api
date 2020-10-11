@@ -12,18 +12,18 @@
 			<column name="name" type="VARCHAR2(100)" />
 		</createTable>
 	</changeSet>
-	<changeSet id="00.b" author="fiaccarino" logicalFilePath="01_faculty.xml">
+	<changeSet id="00.b" author="fiaccarino" logicalFilePath="00_ejemplo.xml">
 		<createSequence sequenceName="SEQ_EJEMPLO" cycle="false" minValue="1"
-			maxValue="999999999999999" startValue="1" incrementBy="1" ordered="true" cacheSize="0" />
+			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
 	<changeSet id="00.c" author="fiaccarino" logicalFilePath="00_ejemplo.xml">
 		<insert tableName="EJEMPLO">  
-        	<column  name="id"  valueComputed="SEQ_EJEMPLO.NEXTVAL"/>
-        	<column  name="name"  value="Ejemplo 1"/>
+        	<column  name="id" valueSequenceNext="SEQ_EJEMPLO"/>
+        	<column  name="name" value="Ejemplo 1"/>
     	</insert>
     	<insert tableName="EJEMPLO">  
-        	<column  name="id"  valueComputed="SEQ_EJEMPLO.NEXTVAL"/>
-        	<column  name="name"  value="Ejemplo 2"/>
+        	<column  name="id" valueSequenceNext="SEQ_EJEMPLO"/>
+        	<column  name="name" value="Ejemplo 2"/>
     	</insert>  
 	</changeSet>
 </databaseChangeLog>
