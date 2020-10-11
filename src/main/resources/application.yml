@@ -12,11 +12,7 @@ spring:
     hibernate:
       ddl-auto: none   
       show-sql: true
-   
-  h2.console.enabled: true
-  h2.console.settings.trace: false
-  h2.console.settings.web-allow-others: false
-  
+
   liquibase:
     enabled: true
     change-log: classpath:db/liquibase/db.changelog.xml 

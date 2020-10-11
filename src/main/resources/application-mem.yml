@@ -4,3 +4,6 @@ spring.datasource.url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=ORACLE;DB_CLOSE
 spring.datasource.username: sa
 spring.datasource.password:
 spring.liquibase.url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=ORACLE;DB_CLOSE_ON_EXIT=FALSE
+spring.h2.console.enabled: true
+spring.h2.console.settings.trace: false
+spring.h2.console.settings.web-allow-others: false
