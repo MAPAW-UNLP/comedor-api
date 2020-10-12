@@ -121,29 +121,12 @@
 			<column name="quantity" value="1" />
 			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name = 'Empanada de Jamon y Queso')" />
 		</insert>
-		
-    	<!-- 
-		
-    	<insert tableName="DISH_RECIPE">  
-			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
-			<column name="name" value="Huevo frito" />	
-		</insert>
+	</changeSet>
 	
-    	<insert tableName="DISH_RECIPE">  
-			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
-			<column name="name" value="Papas fritas" />	
-		</insert>
-    	<insert tableName="DISH_RECIPE">  
-			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
-			<column name="name" value="Pollo al horno" />	
-		</insert>
-		
-    	<insert tableName="DISH_RECIPE">  
-			<column name="id" valueComputed="SEQ_DISH_RECIPE.NEXTVAL" />
-			<column name="name" value="Pure de Papa" />	
-		</insert>
-		 -->
-    	
-    	
+	<changeSet id="96.b" author="fiaccarino" logicalFilePath="data_ingredient_dish_recipe.xml">
+      <update tableName="INGREDIENT_RECIPE">
+      	<column name="measurement" value="unit"/>
+      	<where>measurement='unity'</where>
+      </update>
 	</changeSet>
 </databaseChangeLog>

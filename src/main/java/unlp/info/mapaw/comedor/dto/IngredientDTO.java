@@ -1,17 +1,19 @@
 package unlp.info.mapaw.comedor.dto;
 
+import java.math.BigDecimal;
+
 public class IngredientDTO extends AbstractDTO {
 
 	private IngredientRecipeDTO recipe;
 	
-	private int quantity;
+	private BigDecimal quantity;
 
 
-	public int getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 

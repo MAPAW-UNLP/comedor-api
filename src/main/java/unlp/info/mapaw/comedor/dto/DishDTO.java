@@ -1,14 +1,13 @@
 package unlp.info.mapaw.comedor.dto;
 
-import unlp.info.mapaw.comedor.enums.DishTypeEnum;
-
 public class DishDTO extends AbstractDTO {
 
 	private String name;
 
 	private DishRecipeDTO recipe;
 	
-	private DishTypeEnum type;
+	// set de Description to DishTypeEnum
+	private String type;
 
 	public String getName() {
 		return name;
@@ -18,11 +17,11 @@ public class DishDTO extends AbstractDTO {
 		this.name = name;
 	}
 
-	public DishTypeEnum getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(DishTypeEnum type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

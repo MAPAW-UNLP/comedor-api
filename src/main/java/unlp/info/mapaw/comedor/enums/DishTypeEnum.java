@@ -2,7 +2,7 @@ package unlp.info.mapaw.comedor.enums;
 
 public enum DishTypeEnum {
 
-	ENTRADA("Entrada"), PLATO_PRINCPAL("Plato Principal"), GUARNICION("Guarnición"), POSTRE("Postre"), BEBIDA("Bebida");
+	ENTRADA("appetizer"), PLATO_PRINCPAL("main dish"), GUARNICION("side dish"), POSTRE("dessert"), BEBIDA("drink");
 
 	private String description;
 
@@ -16,5 +16,13 @@ public enum DishTypeEnum {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public static DishTypeEnum getEnum(String description) {
+		for (DishTypeEnum dt : DishTypeEnum.values()) {
+			if (dt.getDescription().equals(description))
+				return dt;
+		}
+		return null;
 	}
 }
