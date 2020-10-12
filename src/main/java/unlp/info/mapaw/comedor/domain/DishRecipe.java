@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="DISH_RECIPE", schema="public")
+@Table(name ="DISH_RECIPE")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_DISH_RECIPE", allocationSize = 1)
 public class DishRecipe extends AbstractEntity {
 	

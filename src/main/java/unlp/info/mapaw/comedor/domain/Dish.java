@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import unlp.info.mapaw.comedor.enums.DishTypeEnum;
 
 @Entity
-@Table(name = "DISH", schema="public")
+@Table(name = "DISH")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_DISH", allocationSize = 1)
 public class Dish extends AbstractEntity {
 

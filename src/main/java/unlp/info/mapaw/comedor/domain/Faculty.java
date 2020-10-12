@@ -5,7 +5,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="FACULTY", schema="public")
+@Table(name ="FACULTY")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_FACULTY", allocationSize = 1)
 public class Faculty extends AbstractEntity {
 	

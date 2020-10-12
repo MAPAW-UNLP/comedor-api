@@ -17,7 +17,7 @@ import unlp.info.mapaw.comedor.enums.RoleEnum;
 import unlp.info.mapaw.comedor.enums.UserConditionEnum;
 
 @Entity
-@Table(name ="USER", schema="public")
+@Table(name ="USER")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_USER", allocationSize = 1)
 public class User extends AbstractEntity {
 

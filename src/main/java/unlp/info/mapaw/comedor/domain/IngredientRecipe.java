@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import unlp.info.mapaw.comedor.enums.MeasurementEnum;
 
 @Entity
-@Table(name = "INGREDIENT_RECIPE", schema="public")
+@Table(name = "INGREDIENT_RECIPE")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_INGREDIENT_RECIPE", allocationSize = 1)
 public class IngredientRecipe extends AbstractEntity {
 
