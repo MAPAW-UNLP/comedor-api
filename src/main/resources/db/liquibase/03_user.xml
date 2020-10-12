@@ -7,7 +7,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
 	<changeSet id="03.a" author="fiaccarino" logicalFilePath="03_user.xml">
-		<createTable tableName="USER">
+		<createTable tableName="USER_AUTH">
 			<column name="id" type="NUMBER(20)" />
 			<column name="dni" type="VARCHAR2(10)" />
 			<column name="fullname" type="VARCHAR2(100)" />
@@ -28,7 +28,7 @@
 		</createTable>
 	</changeSet>
 		<changeSet id="03.b" author="fiaccarino" logicalFilePath="03_user.xml">
-		<createSequence sequenceName="SEQ_USER" cycle="false" minValue="1"
+		<createSequence sequenceName="SEQ_USER_AUTH" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
 </databaseChangeLog>
