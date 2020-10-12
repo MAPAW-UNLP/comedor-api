@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import unlp.info.mapaw.comedor.enums.TicketTypeEnum;
 
 @Entity
-@Table(name ="TICKET")
+@Table(name ="TICKET", schema="public")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_TICKET", allocationSize = 1)
 public class Ticket extends AbstractEntity {
 

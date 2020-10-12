@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "INGREDIENT")
+@Table(name = "INGREDIENT", schema="public")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_INGREDIENT", allocationSize = 1)
 public class Ingredient extends AbstractEntity {
 

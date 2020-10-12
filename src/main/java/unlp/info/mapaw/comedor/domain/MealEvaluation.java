@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import unlp.info.mapaw.comedor.enums.EvaluationScoreEnum;
 
 @Entity
-@Table(name ="MEAL_EVALUATION")
+@Table(name ="MEAL_EVALUATION", schema="public")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_MEAL_EVALUATION", allocationSize = 1)
 public class MealEvaluation extends AbstractEntity {
 

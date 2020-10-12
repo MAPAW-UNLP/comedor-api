@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="MENU")
+@Table(name ="MENU", schema="public")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_MENU", allocationSize = 1)
 public class Menu extends AbstractEntity {
 	
