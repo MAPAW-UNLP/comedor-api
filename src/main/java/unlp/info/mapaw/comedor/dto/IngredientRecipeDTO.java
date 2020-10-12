@@ -1,10 +1,12 @@
 package unlp.info.mapaw.comedor.dto;
 
+import unlp.info.mapaw.comedor.enums.MeasurementEnum;
+
 public class IngredientRecipeDTO extends AbstractDTO {
 
 	private String name;
 
-	private String measurement;
+	private MeasurementEnum measurement;
 
 	public String getName() {
 		return name;
@@ -14,11 +16,11 @@ public class IngredientRecipeDTO extends AbstractDTO {
 		this.name = name;
 	}
 
-	public String getMeasurement() {
+	public MeasurementEnum getMeasurement() {
 		return measurement;
 	}
 
-	public void setMeasurement(String measurement) {
+	public void setMeasurement(MeasurementEnum measurement) {
 		this.measurement = measurement;
 	}
 }

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.IngredientRecipe;
 import unlp.info.mapaw.comedor.dto.IngredientRecipeDTO;
-import unlp.info.mapaw.comedor.enums.MeasurementEnum;
 
 @Service
 public class IngredientRecipeService extends AbstractEntityService<IngredientRecipeDTO, IngredientRecipe> {
@@ -12,7 +11,7 @@ public class IngredientRecipeService extends AbstractEntityService<IngredientRec
 	@Override
 	protected IngredientRecipeDTO addCustomPropertiesToDTO(IngredientRecipe entity, IngredientRecipeDTO dto) {
 		dto.setName(entity.getName());
-		dto.setMeasurement(entity.getMeasurement().getDescription());
+		dto.setMeasurement(entity.getMeasurement());
 		return dto;
 	}
 
@@ -23,7 +22,7 @@ public class IngredientRecipeService extends AbstractEntityService<IngredientRec
 
 	@Override
 	protected IngredientRecipe addCustomPropertiesToEntity(IngredientRecipeDTO dto, IngredientRecipe entity) {
-		entity.setMeasurement(MeasurementEnum.getEnum(dto.getMeasurement()));
+		entity.setMeasurement(dto.getMeasurement());
 		entity.setName(dto.getName());
 		return entity;
 	}
