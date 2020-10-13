@@ -18,4 +18,9 @@
 		<createSequence sequenceName="SEQ_MEAL" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="07.c" author="fiaccarino" logicalFilePath="07_meal.xml">
+		<addColumn tableName="MEAL" >
+			<column name="observations" type="varchar(400)"/>
+		</addColumn> 	
+	</changeSet>
 </databaseChangeLog>
