@@ -17,8 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(securedEnabled = true) // Habilitamos la securización de nuestra API con @Secured
-@EnableGlobalMethodSecurity(prePostEnabled = true) // Habilitamos la securización de nuestra API con @Secured
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private UserDetailsService userDetailsService;
@@ -61,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll();
 		httpSecurity.authorizeRequests().antMatchers("/doc/**").permitAll(); // path de open-api
 		httpSecurity.authorizeRequests().antMatchers("/api/home").permitAll().antMatchers("/h2-console/**").permitAll();
-		//httpSecurity.authorizeRequests().anyRequest().authenticated();
+		httpSecurity.authorizeRequests().anyRequest().authenticated();
 		httpSecurity.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
 						UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(jwtAuthorizationFilterBean(), UsernamePasswordAuthenticationFilter.class);
