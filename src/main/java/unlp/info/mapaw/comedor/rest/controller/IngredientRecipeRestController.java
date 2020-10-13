@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import unlp.info.mapaw.comedor.domain.IngredientRecipe;
 import unlp.info.mapaw.comedor.dto.IngredientRecipeDTO;
@@ -38,6 +40,7 @@ public class IngredientRecipeRestController extends AbstractRestController<Ingre
 		        .body(service.get(IngredientRecipe.class, id));
 	}
 	
+	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 	@PreAuthorize("hasRole('EMPLOYEE')")
 	@PutMapping(value="/save", consumes = { "application/json" }, produces = { "application/json" })
 	public ResponseEntity<IngredientRecipeDTO> save( @RequestBody IngredientRecipeDTO dto) {
