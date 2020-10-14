@@ -9,9 +9,10 @@ spring:
     chain:
       cache: false
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: none   
-      show-sql: true
+      
 
   liquibase:
     enabled: true

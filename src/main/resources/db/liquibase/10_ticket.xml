@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="10.a" author="fiaccarino" logicalFilePath="10_ticket.xml">
+		<createTable tableName="TICKET">
+			<column name="id" type="NUMBER(20)" />
+			<column name="id_menu" type="NUMBER(20)" />
+			<column name="id_client" type="NUMBER(20)" />
+			<column name="type" type="VARCHAR2(20)" />
+		</createTable>
+	</changeSet>
+	<changeSet id="10.b" author="fiaccarino" logicalFilePath="10_ticket.xml">
+		<createSequence sequenceName="SEQ_TICKET" cycle="false" minValue="1"
+			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
+	</changeSet>
+</databaseChangeLog>
