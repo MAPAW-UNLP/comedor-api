@@ -17,8 +17,8 @@ import unlp.info.mapaw.comedor.enums.RoleEnum;
 import unlp.info.mapaw.comedor.enums.UserConditionEnum;
 
 @Entity
-@Table(name ="USER")
-@SequenceGenerator(name = "SEQ", sequenceName = "SEQ_USER", allocationSize = 1)
+@Table(name ="USER_AUTH")
+@SequenceGenerator(name = "SEQ", sequenceName = "SEQ_USER_AUTH", allocationSize = 1)
 public class User extends AbstractEntity {
 
 	@Column
@@ -34,9 +34,9 @@ public class User extends AbstractEntity {
 	@Column
 	private RoleEnum role;
 
-	@ManyToMany
-	@JoinTable(name = "CLIENT_FACULTY", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "id_faculty"))
-	private Set<Faculty> faculties;
+//	@ManyToMany
+//	@JoinTable(name = "CLIENT_FACULTY", joinColumns = @JoinColumn(name = "id_client"), inverseJoinColumns = @JoinColumn(name = "id_faculty"))
+//	private Set<Faculty> faculties;
 
 	@ManyToOne
 	@JoinColumn(name = "id_kitchen_site")
@@ -105,11 +105,11 @@ public class User extends AbstractEntity {
 		this.condition = condition;
 	}
 
-	public Set<Faculty> getFaculties() {
-		return faculties;
-	}
-
-	public void setFaculties(Set<Faculty> faculties) {
-		this.faculties = faculties;
-	}
+//	public Set<Faculty> getFaculties() {
+//		return faculties;
+//	}
+//
+//	public void setFaculties(Set<Faculty> faculties) {
+//		this.faculties = faculties;
+//	}
 }

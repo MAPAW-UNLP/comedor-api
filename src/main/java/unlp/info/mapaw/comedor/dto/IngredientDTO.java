@@ -1,36 +1,27 @@
 package unlp.info.mapaw.comedor.dto;
 
-import unlp.info.mapaw.comedor.enums.MeasurementEnum;
+import java.math.BigDecimal;
 
 public class IngredientDTO extends AbstractDTO {
 
-    private String name;
+	private IngredientRecipeDTO recipe;
 	
-    private MeasurementEnum measurement;
-	
-	private int quantity;
+	private BigDecimal quantity;
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public MeasurementEnum getMeasurement() {
-		return measurement;
-	}
-
-	public void setMeasurement(MeasurementEnum measurement) {
-		this.measurement = measurement;
-	}
-
-	public int getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
+	}
+
+	public IngredientRecipeDTO getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(IngredientRecipeDTO recipe) {
+		this.recipe = recipe;
 	}
 }

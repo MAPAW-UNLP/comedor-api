@@ -15,36 +15,37 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import unlp.info.mapaw.comedor.domain.DishRecipe;
-import unlp.info.mapaw.comedor.dto.DishRecipeDTO;
+import unlp.info.mapaw.comedor.domain.IngredientRecipe;
+import unlp.info.mapaw.comedor.dto.IngredientRecipeDTO;
 import unlp.info.mapaw.comedor.rest.controller.abstractClass.AbstractRestController;
-import unlp.info.mapaw.comedor.service.DishRecipeService;
+import unlp.info.mapaw.comedor.service.IngredientRecipeService;
 
-@Tag(name = "Dish Recipe", description = "API de Dish Recipe")
+@Tag(name = "Ingredient Recipe", description = "API de Ingredient Recipe")
 @RestController
-@RequestMapping("/api/dishRecipe")
-public class DichRecipeRestController extends AbstractRestController<DishRecipeDTO> {
+@RequestMapping("/api/ingredientRecipe")
+public class IngredientRecipeRestController extends AbstractRestController<IngredientRecipeDTO> {
 
 	@Autowired
-	private DishRecipeService service;
-
+	private IngredientRecipeService service;
+	
 	@Override
-	public ResponseEntity<Collection<DishRecipeDTO>> getAll() {
+	public ResponseEntity<Collection<IngredientRecipeDTO>> getAll() {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-				.body(service.getAll(DishRecipe.class));
+		        .body(service.getAll(IngredientRecipe.class));
 	}
 
 	@Override
-	public ResponseEntity<DishRecipeDTO> getById(Long id) {
+	public ResponseEntity<IngredientRecipeDTO> getById(Long id) {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-				.body(service.get(DishRecipe.class, id));
+		        .body(service.get(IngredientRecipe.class, id));
 	}
-
 	
 	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 	@PreAuthorize("hasRole('EMPLOYEE')")
-	@PutMapping(value = "/save", consumes = { "application/json" }, produces = { "application/json" })
-	public ResponseEntity<DishRecipeDTO> save(@RequestBody DishRecipeDTO dto) {
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(service.save(dto));
+	@PutMapping(value="/save", consumes = { "application/json" }, produces = { "application/json" })
+	public ResponseEntity<IngredientRecipeDTO> save( @RequestBody IngredientRecipeDTO dto) {
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+		        .body(service.save(dto));
 	}
+
 }

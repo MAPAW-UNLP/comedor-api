@@ -1,15 +1,12 @@
 package unlp.info.mapaw.comedor.domain;
 
-import javax.persistence.Column;
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import unlp.info.mapaw.comedor.enums.MeasurementEnum;
 
 @Entity
 @Table(name = "INGREDIENT")
@@ -20,13 +17,13 @@ public class Ingredient extends AbstractEntity {
 	@JoinColumn(name = "id_ingredient_recipe")
 	private IngredientRecipe recipe;
 
-	private int quantity;
+	private BigDecimal quantity;
 
-	public int getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 

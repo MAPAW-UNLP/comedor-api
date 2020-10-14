@@ -14,7 +14,7 @@ import unlp.info.mapaw.comedor.service.abstracts.AbstractCRUDService;
 public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends AbstractEntity> {
 
 	@Autowired
-	private AbstractCRUDService crudService;
+	protected AbstractCRUDService crudService;
 	
 	protected abstract DTO addCustomPropertiesToDTO(T entity, DTO dto);
 	
