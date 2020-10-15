@@ -22,10 +22,10 @@ public class Meal extends AbstractEntity {
 	@JoinColumn(name = "id_meal")
 	private List<Dish> items= new ArrayList<>();
 	
-	@Column(name="suitable_for_vegetarians")
+	@Column(name="suitable_for_vegetarians", columnDefinition="TINYINT", length=1)
 	private boolean suitableForVegetarians;
 	
-	@Column(name="suitable_for_celiacs")
+	@Column(name="suitable_for_celiacs", columnDefinition="TINYINT", length=1)
 	private boolean suitableForCeliacs;
 	
 	private String observations;
