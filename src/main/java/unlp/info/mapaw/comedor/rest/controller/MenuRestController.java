@@ -38,14 +38,15 @@ public class MenuRestController extends AbstractRestController<MenuDTO>{
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 		        .body(service.get(Menu.class, id));
 	}
-	
-	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-	@PreAuthorize("hasRole('EMPLOYEE')")
-	@PutMapping(value="/save", consumes = { "application/json" }, produces = { "application/json" })
-	public ResponseEntity<MenuDTO> save( @RequestBody MenuDTO dto) {
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.save(dto));
-	}
+
+	//Se comenta porque la generacion de Menu es atravez de otro DTO (Debe recibir MealDTO, List<Date> fechas, y List<KitchenSite> sedes)
+//	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+//	@PreAuthorize("hasRole('EMPLOYEE')")
+//	@PutMapping(value="/save", consumes = { "application/json" }, produces = { "application/json" })
+//	public ResponseEntity<MenuDTO> save( @RequestBody MenuDTO dto) {
+//		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+//		        .body(service.save(dto));
+//	}
 	
 //	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 //	@PreAuthorize("hasRole('EMPLOYEE')")
