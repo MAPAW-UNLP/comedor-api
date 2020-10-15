@@ -31,4 +31,14 @@ public class Dish extends AbstractEntity {
 	public void setRecipe(DishRecipe recipe) {
 		this.recipe = recipe;
 	}
+
+	public DishTypeEnum getType() {
+		return type;
+	}
+
+	public void setType(DishTypeEnum type) {
+		this.type = type;
+	}
+	
+	
 }

@@ -2,7 +2,7 @@ package unlp.info.mapaw.comedor.enums;
 
 public enum DishTypeEnum {
 
-	ENTRADA("appetizer"), PLATO_PRINCPAL("main dish"), GUARNICION("side dish"), POSTRE("dessert"), BEBIDA("drink");
+	ENTRADA("appetizer"), PLATO_PRINCIPAL("main dish"), GUARNICION("side dish"), POSTRE("dessert"), BEBIDA("drink");
 
 	private String description;
 

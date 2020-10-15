@@ -12,7 +12,17 @@ public class MealDTO extends AbstractDTO {
 	private boolean suitableForVegetarians;
 
 	private boolean suitableForCeliacs;
+	
+	private String observations;
 
+	public String getObservations() {
+		return observations;
+	}
+
+	public void setObservations(String observations) {
+		this.observations = observations;
+	}
+	
 	public String getName() {
 		return name;
 	}
