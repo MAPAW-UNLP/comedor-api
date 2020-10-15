@@ -9,11 +9,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+
 import unlp.info.mapaw.comedor.enums.TicketTypeEnum;
 
 @Entity
 @Table(name ="TICKET")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_TICKET", allocationSize = 1)
+@FilterDef(name = "clienteTicket", parameters = @ParamDef(name = "idCliente", type = "long"))
+@Filter(name = "clienteTicket", condition = "id_client = :idCliente")
 public class Ticket extends AbstractEntity {
 
 	@ManyToOne
