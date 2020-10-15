@@ -22,7 +22,7 @@ public class OpenApiConfig {
   public OpenAPI customOpenAPI() {
     return new OpenAPI().components(new Components())
         .info(new Info().title("Comedor-API").description(
-            "Documentación de la API de Servicios RESTFul de Comedor-API"));
+            "DocumentaciÃ³n de la API de Servicios RESTFul de Comedor-API"));
   }
 
 
