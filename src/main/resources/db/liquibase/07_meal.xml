@@ -24,7 +24,7 @@
 		</addColumn> 	
 	</changeSet>
 	<changeSet id="07.d" author="fiaccarino" logicalFilePath="07_meal.xml">  
-    	<modifyDataType columnName="suitable_for_vegetarians" newDataType="boolean" tableName="MENU"/>
-    	<modifyDataType columnName="suitable_for_celiacs" newDataType="boolean" tableName="MENU"/>
+    	<modifyDataType columnName="suitable_for_vegetarians" newDataType="boolean" tableName="MEAL"/>
+    	<modifyDataType columnName="suitable_for_celiacs" newDataType="boolean" tableName="MEAL"/>
 </changeSet>
 </databaseChangeLog>
