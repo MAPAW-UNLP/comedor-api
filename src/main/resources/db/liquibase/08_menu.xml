@@ -15,9 +15,10 @@
 			<column name="date" type="DATE" />
 			<column name="unit_price" type="NUMBER(20,2)" />
 			<column name="current_stock" type="NUMBER(20)" />
+			<column name="anticipation_days" type="NUMBER(20)" />
 		</createTable>
 	</changeSet>
-		<changeSet id="08.b" author="fiaccarino" logicalFilePath="08_menu.xml">
+	<changeSet id="08.b" author="fiaccarino" logicalFilePath="08_menu.xml">
 		<createSequence sequenceName="SEQ_MENU" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>

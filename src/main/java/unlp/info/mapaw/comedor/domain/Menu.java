@@ -32,6 +32,9 @@ public class Menu extends AbstractEntity {
 	
 	@Column(name = "current_stock")
 	private int currentStock;
+	
+	@Column(name = "anticipation_days")
+	private int anticipationDays;
 
 	public String getName() {
 		return name;
@@ -79,5 +82,13 @@ public class Menu extends AbstractEntity {
 
 	public void setCurrentStock(int currentStock) {
 		this.currentStock = currentStock;
+	}
+
+	public int getAnticipationDays() {
+		return anticipationDays;
+	}
+
+	public void setAnticipationDays(int anticipationDays) {
+		this.anticipationDays = anticipationDays;
 	}
 }

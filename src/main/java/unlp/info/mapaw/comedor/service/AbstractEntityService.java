@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.AbstractEntity;
 import unlp.info.mapaw.comedor.dto.AbstractDTO;
+import unlp.info.mapaw.comedor.security.SecuredUser;
 import unlp.info.mapaw.comedor.service.abstracts.AbstractCRUDService;
 
 @Service
@@ -64,5 +66,9 @@ public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends A
 	
 	public void delete(Class<T> entityClass, Long id) {
 		crudService.delete(entityClass, id);
+	}
+	
+	protected SecuredUser getUsuarioLogueado() {
+		return (SecuredUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	}
 }
