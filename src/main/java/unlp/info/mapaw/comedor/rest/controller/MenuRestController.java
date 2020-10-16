@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +45,7 @@ public class MenuRestController extends AbstractRestController<MenuDTO>{
 	
 	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 	@PostMapping(value="/search", consumes = { "application/json" }, produces = { "application/json" })
-	public ResponseEntity<Collection<MenuDTO>> getBySearch(@RequestParam MenuSearchDTO search){
+	public ResponseEntity<Collection<MenuDTO>> getBySearch(@RequestBody MenuSearchDTO search){
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 		        .body(service.getBySearch(search));
 	}
@@ -52,7 +53,7 @@ public class MenuRestController extends AbstractRestController<MenuDTO>{
 	@PreAuthorize("hasRole('EMPLOYEE')")
 	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 	@PostMapping(value="/create", consumes = { "application/json" }, produces = { "application/json" })
-	public ResponseEntity<Collection<MenuDTO>> create(@RequestParam CreateMenusDTO createMenusDTO){
+	public ResponseEntity<Collection<MenuDTO>> create(@RequestBody CreateMenusDTO createMenusDTO){
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 		        .body(service.createFrom(createMenusDTO));
 	}
