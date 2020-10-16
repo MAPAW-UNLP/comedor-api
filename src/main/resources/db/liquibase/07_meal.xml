@@ -23,8 +23,17 @@
 			<column name="observations" type="varchar(400)"/>
 		</addColumn> 	
 	</changeSet>
-	<changeSet id="07.d" author="fiaccarino" logicalFilePath="07_meal.xml">  
-    	<modifyDataType columnName="suitable_for_vegetarians" newDataType="boolean" tableName="MEAL"/>
-    	<modifyDataType columnName="suitable_for_celiacs" newDataType="boolean" tableName="MEAL"/>
+	<changeSet id="07.d" author="fiaccarino" logicalFilePath="07_meal.xml">
+		<dropColumn columnName="suitable_for_vegetarians" tableName="MEAL">  
+        	<column  name="suitable_for_vegetarians"/>  
+    	</dropColumn>  
+    	<dropColumn columnName="suitable_for_celiacs" tableName="MEAL">  
+        	<column  name="suitable_for_celiacs"/>  
+    	</dropColumn>
+    <addColumn tableName="MEAL" >
+		<column name="suitable_for_celiacs" type="boolean"/>  
+		<column name="suitable_for_vegetarians" type="boolean"/>  
+  	</addColumn>  
+
 </changeSet>
 </databaseChangeLog>
