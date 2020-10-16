@@ -1,4 +1,4 @@
-package unlp.info.mapaw.comedor.repository;
+package unlp.info.mapaw.comedor.repository.impl;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import unlp.info.mapaw.comedor.domain.Menu;
 import unlp.info.mapaw.comedor.domain.User;
 import unlp.info.mapaw.comedor.dto.MenuSearchDTO;
+import unlp.info.mapaw.comedor.repository.IMenuRepositoy;
 
 @Repository
 public class MenuRepository implements IMenuRepositoy {
