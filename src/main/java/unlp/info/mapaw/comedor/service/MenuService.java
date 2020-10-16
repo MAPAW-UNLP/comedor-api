@@ -96,6 +96,7 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 				menu.setMeal(meal);
 				menu.setKitchenSite(kitchenSite);
 				menu.setDate(date);
+				menu.setUnitPrice(createMenusDTO.getUnitPrice());
 				menu = crudService.save(menu);
 				menusCreates.add(menu);
 			}
