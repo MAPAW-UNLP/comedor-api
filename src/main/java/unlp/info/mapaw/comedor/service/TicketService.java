@@ -51,7 +51,7 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 		if (!shoppingCartDTO.getItems().isEmpty()) {
 			List<Ticket> tickets = new ArrayList<>();
 			for (ItemShoppingCartDTO item : shoppingCartDTO.getItems()) {
-				Menu menu = crudService.findOne(Menu.class, item.getMenuDTO().getId());
+				Menu menu = crudService.findOne(Menu.class, item.getMenu().getId());
 				if (!this.menuHasStock(menu))
 					throw new ServiceException("Menu has no more stock");
 				menu.discountStock();

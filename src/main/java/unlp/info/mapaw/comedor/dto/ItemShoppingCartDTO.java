@@ -4,16 +4,16 @@ import unlp.info.mapaw.comedor.enums.TicketTypeEnum;
 
 public class ItemShoppingCartDTO {
 	
-	private MenuDTO menuDTO;
+	private MenuDTO menu;
 	
 	private TicketTypeEnum ticketType;
 	
-	public MenuDTO getMenuDTO() {
-		return menuDTO;
+	public MenuDTO getMenu() {
+		return menu;
 	}
 
-	public void setMenuDTO(MenuDTO menuDTO) {
-		this.menuDTO = menuDTO;
+	public void setMenu(MenuDTO menu) {
+		this.menu = menu;
 	}
 
 	public TicketTypeEnum getTicketType() {
