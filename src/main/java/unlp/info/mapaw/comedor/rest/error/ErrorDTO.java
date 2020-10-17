@@ -11,12 +11,15 @@ public class ErrorDTO {
 	private String error;
 	
 	private String message;
+	
+	private String path;
 
-	public ErrorDTO(int status, String error, String message) {
+	public ErrorDTO(int status, String error, String message, String path) {
 		super();
 		this.status = status;
 		this.error = error;
 		this.message = message;
+		this.path = path;
 		this.timestamp = new Date().getTime();
 	}
 
@@ -50,6 +53,14 @@ public class ErrorDTO {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 

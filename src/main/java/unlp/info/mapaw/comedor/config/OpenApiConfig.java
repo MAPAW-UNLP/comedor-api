@@ -10,21 +10,15 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 
 @Configuration
-@SecurityScheme(
-	    name = "bearerAuth",
-	    type = SecuritySchemeType.HTTP,
-	    bearerFormat = "JWT",
-	    scheme = "bearer"
-	)
+@SecurityScheme(name = "bearerAuth", type = SecuritySchemeType.HTTP, bearerFormat = "JWT", scheme = "bearer")
 public class OpenApiConfig {
 
 	@Bean
-  public OpenAPI customOpenAPI() {
-    return new OpenAPI().components(new Components())
-        .info(new Info().title("Comedor-API").description(
-            "Documentación de la API de Servicios RESTFul de Comedor-API"));
-  }
-
-
+	public OpenAPI customOpenAPI() {
+		return new OpenAPI().components(new Components())
+				.info(new Info().title("Comedor-API")
+						.description("Documentación de la API de Servicios RESTFul de Comedor-API"));
+				//.paths(new Paths().addPathItem("/login", new PathItem().post(new Operation().addParametersItem(new Parameter().name("username").required(true)))));
+	}
 
 }
