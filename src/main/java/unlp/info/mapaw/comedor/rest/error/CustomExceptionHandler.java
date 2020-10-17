@@ -26,7 +26,7 @@ public class CustomExceptionHandler {
 	public ResponseEntity<ErrorDTO> handleServiceException(final AccessDeniedException rse,
 			final HttpServletRequest request) {
 		ErrorDTO dto = new ErrorDTO(HttpStatus.FORBIDDEN.value(),
-				"Access denied", null, request.getRequestURI());
+				"Access denied", "", request.getRequestURI());
 		return ResponseEntity.status(dto.getStatus()).contentType(MediaType.APPLICATION_JSON).body(dto);
 	}
 }
