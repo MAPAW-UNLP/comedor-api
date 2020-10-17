@@ -91,4 +91,8 @@ public class Menu extends AbstractEntity {
 	public void setAnticipationDays(int anticipationDays) {
 		this.anticipationDays = anticipationDays;
 	}
+	
+	public void discountStock() {
+		this.setCurrentStock(this.getCurrentStock() - 1);
+	}
 }

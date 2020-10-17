@@ -18,4 +18,11 @@
 		<createSequence sequenceName="SEQ_TICKET" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	
+	<changeSet id="10.c" author="fiaccarino" logicalFilePath="10_ticket.xml">
+		<addColumn tableName="TICKET" >
+			<column name="number" type="VARCHAR2(10)"/>  
+		</addColumn>  
+	</changeSet>
+	
 </databaseChangeLog>

@@ -7,6 +7,8 @@ public class TicketDTO extends AbstractDTO {
 	private MenuDTO menu;
 
 	private TicketTypeEnum type;
+	
+	private String number;
 
 	public MenuDTO getMenu() {
 		return menu;
@@ -22,6 +24,14 @@ public class TicketDTO extends AbstractDTO {
 
 	public void setType(TicketTypeEnum type) {
 		this.type = type;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 }

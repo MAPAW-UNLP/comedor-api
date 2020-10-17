@@ -33,6 +33,8 @@ public class Ticket extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	@Column
 	private TicketTypeEnum type;
+	
+	private String number;
 
 	public Menu getMenu() {
 		return menu;
@@ -56,5 +58,13 @@ public class Ticket extends AbstractEntity {
 
 	public void setType(TicketTypeEnum type) {
 		this.type = type;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 }

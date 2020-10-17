@@ -1,0 +1,20 @@
+package unlp.info.mapaw.comedor.rest.error;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import unlp.info.mapaw.comedor.exception.ServiceException;
+
+@ControllerAdvice
+public class CustomExceptionHandler {
+
+	@ExceptionHandler(ServiceException.class)
+	public ResponseEntity<ErrorDTO> handleServiceException(ServiceException rse) {
+		ErrorDTO dto = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+				HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), rse.getMessage());
+		return ResponseEntity.status(dto.getStatus()).contentType(MediaType.APPLICATION_JSON).body(dto);
+	}
+}
