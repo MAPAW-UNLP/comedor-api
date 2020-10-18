@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="96.f" author="fiaccarino" logicalFilePath="data_dish_meal_menu.xml">
+		<insert tableName="MEAL">
+			<column name="id" valueSequenceNext="SEQ_MEAL" />
+			<column name="name" value="Milanesa con pollo solito" />
+			<column name="suitable_for_vegetarians" value="false" />
+			<column name="suitable_for_celiacs" value="false" />
+		</insert>
+		<insert tableName="DISH">
+			<column name="id" valueSequenceNext="SEQ_DISH" />
+			<column name="id_dish_recipe" valueComputed="(select id from DISH_RECIPE where name= 'Milanesa de pollo')" />
+			<column name="id_meal" valueComputed="(select id from MEAL where name= 'Milanesa con pollo solito')" />
+			<column name="type" value="PLATO_PRINCIPAL" />
+		</insert>
+		<insert tableName="MENU">
+			<column name="id" valueSequenceNext="SEQ_MENU" />
+			<column name="name" value="Milanesaaa ricaaa" />
+			<column name="id_meal" valueComputed="(select id from MEAL where name= 'Milanesa con pollo solito')" />
+			<column name="id_kitchen_site" valueComputed="(select id from KITCHEN_SITE where name= 'Bosque Oeste')" />
+			<column name="date" valueComputed="now()" />
+			<column name="unit_price" value="45" />
+			<column name="current_stock" value="4" />
+			<column name="anticipation_days" value="1" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

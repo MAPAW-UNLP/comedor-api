@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import unlp.info.mapaw.comedor.domain.KitchenSite;
 import unlp.info.mapaw.comedor.domain.Meal;
 import unlp.info.mapaw.comedor.domain.Menu;
+import unlp.info.mapaw.comedor.domain.Ticket;
 import unlp.info.mapaw.comedor.dto.CreateMenusDTO;
 import unlp.info.mapaw.comedor.dto.KitchenSiteDTO;
 import unlp.info.mapaw.comedor.dto.MenuDTO;
 import unlp.info.mapaw.comedor.dto.MenuSearchDTO;
+import unlp.info.mapaw.comedor.dto.TicketDTO;
 import unlp.info.mapaw.comedor.repository.IMenuRepositoy;
 
 @Service
@@ -27,6 +29,9 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 
 	@Autowired
 	private IMenuRepositoy menuRepository;
+	
+	@Autowired
+	private TicketService ticketService;
 
 	@Override
 	protected MenuDTO addCustomPropertiesToDTO(Menu entity, MenuDTO dto) {

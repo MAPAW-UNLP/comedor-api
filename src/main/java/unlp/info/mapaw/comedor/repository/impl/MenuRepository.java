@@ -22,7 +22,7 @@ public class MenuRepository implements IMenuRepositoy {
 	@Override
 	public List<Menu> getBySearchFilteringForUser(MenuSearchDTO search, User user) {
 		Query query = entityManager.createQuery(
-				"SELECT o FROM Menu o WHERE o.kitchenSite.id = :idKitchenSite and o.date = :fecha and not exist (select 1 from Ticket a where a.menu.id = o.id and a.client.id = :idClient)",
+				"select o from Menu o where o.kitchenSite.id = :idKitchenSite and o.date = :fecha and o.id not in (select t.menu.id from Ticket t where t.client.id = :idClient)",
 				Menu.class);
 		query.setParameter("idKitchenSite", search.getKitchenSite().getId());
 		query.setParameter("fecha", search.getDate());
@@ -33,7 +33,7 @@ public class MenuRepository implements IMenuRepositoy {
 	@Override
 	public List<Menu> getBySearch(MenuSearchDTO search) {
 		Query query = entityManager.createQuery(
-				"SELECT o FROM Menu o WHERE o.kitchenSite.id = :idKitchenSite and o.date = :fecha", Menu.class);
+				"select o from Menu o where o.kitchenSite.id = :idKitchenSite and o.date = :fecha", Menu.class);
 		query.setParameter("idKitchenSite", search.getKitchenSite().getId());
 		query.setParameter("fecha", search.getDate());
 		return query.getResultList();
@@ -42,7 +42,7 @@ public class MenuRepository implements IMenuRepositoy {
 	@Override
 	public List<Menu> getAllFilteringForUser(User user) {
 		Query query = entityManager.createQuery(
-				"SELECT o FROM Menu o WHERE not exist (select 1 from Ticket a where a.menu.id = o.id and a.client.id = :idClient)",
+				"select o from Menu o where o.id not in (select t.menu.id from Ticket t where t.client.id = :idClient)",
 				Menu.class);
 		query.setParameter("idClient", user.getId());
 		return query.getResultList();
