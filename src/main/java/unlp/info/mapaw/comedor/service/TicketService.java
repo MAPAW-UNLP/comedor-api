@@ -26,6 +26,7 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 		dto.setMenu(menuService.createDTO(entity.getMenu()));
 		dto.setType(entity.getType());
 		dto.setNumber(entity.getNumber());
+		dto.setConsumed(entity.isConsumed());
 		return dto;
 	}
 

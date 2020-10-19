@@ -28,5 +28,12 @@
 	    <addNotNullConstraint columnName="id" tableName="TICKET" />
 		<addPrimaryKey columnNames="id" constraintName="TICKET_PK" tableName="TICKET"  /> 
 	</changeSet>
+	<changeSet id="10.d" author="fiaccarino" logicalFilePath="10_ticket.xml">
+		<addColumn tableName="TICKET" > 
+			<column name="consumed" type="boolean" defaultValue="false" >  
+				<constraints nullable="false" />  
+			</column>  
+		</addColumn>
+	</changeSet>
 	
 </databaseChangeLog>

@@ -35,6 +35,8 @@ public class Ticket extends AbstractEntity {
 	private TicketTypeEnum type;
 	
 	private String number;
+	
+	private boolean consumed = false;
 
 	public Menu getMenu() {
 		return menu;
@@ -66,5 +68,13 @@ public class Ticket extends AbstractEntity {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public boolean isConsumed() {
+		return consumed;
+	}
+
+	public void setConsumed(boolean consumed) {
+		this.consumed = consumed;
 	}
 }
