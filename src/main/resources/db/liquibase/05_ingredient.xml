@@ -21,4 +21,8 @@
 	<changeSet id="05.c" author="fiaccarino" logicalFilePath="05_ingredient.xml">
 		<modifyDataType columnName="quantity" newDataType="NUMBER(20,2)" tableName="INGREDIENT"/>  
 	</changeSet>
+	<changeSet id="05.d" author="fiaccarino" logicalFilePath="05_ingredient.xml">
+	    <addNotNullConstraint columnName="id" tableName="INGREDIENT" />
+		<addPrimaryKey columnNames="id" constraintName="INGREDIENT_PK" tableName="INGREDIENT"  /> 
+	</changeSet>
 </databaseChangeLog>

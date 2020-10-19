@@ -39,4 +39,8 @@
 	<changeSet id="07.e" author="fiaccarino" logicalFilePath="07_meal.xml">
 		<modifyDataType  columnName="name" newDataType="VARCHAR2(200)" tableName="MEAL"/>
 	</changeSet>
+	<changeSet id="01.f" author="fiaccarino" logicalFilePath="07_meal.xml">
+	    <addNotNullConstraint columnName="id" tableName="MEAL" />
+		<addPrimaryKey columnNames="id" constraintName="MEAL_PK" tableName="MEAL"  /> 
+	</changeSet>
 </databaseChangeLog>

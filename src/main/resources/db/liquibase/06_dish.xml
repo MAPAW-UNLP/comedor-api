@@ -19,4 +19,8 @@
 		<createSequence sequenceName="SEQ_DISH" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="06.c" author="fiaccarino" logicalFilePath="06_dish.xml">
+	    <addNotNullConstraint columnName="id" tableName="DISH" />
+		<addPrimaryKey columnNames="id" constraintName="DISH_PK" tableName="DISH"  /> 
+	</changeSet>
 </databaseChangeLog>

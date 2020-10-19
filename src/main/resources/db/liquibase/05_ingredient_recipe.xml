@@ -20,4 +20,9 @@
 	<changeSet id="05.c" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
 		<modifyDataType  columnName="name" newDataType="VARCHAR2(200)" tableName="INGREDIENT_RECIPE"/>
 	</changeSet>
+	
+	<changeSet id="05.d" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
+	    <addNotNullConstraint columnName="id" tableName="INGREDIENT_RECIPE" />
+		<addPrimaryKey columnNames="id" constraintName="INGREDIENT_RECIPE_PK" tableName="INGREDIENT_RECIPE"  /> 
+	</changeSet>
 </databaseChangeLog>

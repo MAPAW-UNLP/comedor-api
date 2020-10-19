@@ -16,4 +16,9 @@
 		<createSequence sequenceName="SEQ_FACULTY" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="01.c" author="fiaccarino" logicalFilePath="01_faculty.xml">
+	    <addNotNullConstraint columnName="id" tableName="FACULTY" />
+		<addPrimaryKey columnNames="id" constraintName="FACULTY_PK" tableName="FACULTY"  /> 
+	</changeSet>
+	
 </databaseChangeLog>

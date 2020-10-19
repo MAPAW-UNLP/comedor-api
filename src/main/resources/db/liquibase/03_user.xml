@@ -31,4 +31,8 @@
 		<createSequence sequenceName="SEQ_USER_AUTH" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="03.c" author="fiaccarino" logicalFilePath="03_user.xml">
+	    <addNotNullConstraint columnName="id" tableName="USER_AUTH" />
+		<addPrimaryKey columnNames="id" constraintName="USER_AUTH_PK" tableName="USER_AUTH"  /> 
+	</changeSet>
 </databaseChangeLog>

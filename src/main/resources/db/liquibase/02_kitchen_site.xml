@@ -16,4 +16,8 @@
 		<createSequence sequenceName="SEQ_KITCHEN_SITE" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="02.c" author="fiaccarino" logicalFilePath="02_kitchen_site.xml">
+	    <addNotNullConstraint columnName="id" tableName="KITCHEN_SITE" />
+		<addPrimaryKey columnNames="id" constraintName="KITCHEN_SITE_PK" tableName="KITCHEN_SITE"  /> 
+	</changeSet>
 </databaseChangeLog>

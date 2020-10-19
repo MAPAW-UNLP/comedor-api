@@ -24,5 +24,9 @@
 	</changeSet>
 	<changeSet id="08.c" author="fiaccarino" logicalFilePath="08_menu.xml">
 		<modifyDataType  columnName="name" newDataType="VARCHAR2(200)" tableName="MENU"/>
-    </changeSet>  
+    </changeSet>
+    <changeSet id="08.d" author="fiaccarino" logicalFilePath="08_menu.xml">
+	    <addNotNullConstraint columnName="id" tableName="MENU" />
+		<addPrimaryKey columnNames="id" constraintName="MENU_PK" tableName="MENU"  /> 
+	</changeSet>
 </databaseChangeLog>

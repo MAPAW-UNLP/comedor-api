@@ -24,5 +24,9 @@
 			<column name="number" type="VARCHAR2(10)"/>  
 		</addColumn>  
 	</changeSet>
+	<changeSet id="10.d" author="fiaccarino" logicalFilePath="01_faculty.xml">
+	    <addNotNullConstraint columnName="id" tableName="TICKET" />
+		<addPrimaryKey columnNames="id" constraintName="TICKET_PK" tableName="TICKET"  /> 
+	</changeSet>
 	
 </databaseChangeLog>

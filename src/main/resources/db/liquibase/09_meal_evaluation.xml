@@ -19,4 +19,8 @@
 		<createSequence sequenceName="SEQ_MEAL_EVALUATION" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="09.c" author="fiaccarino" logicalFilePath="01_faculty.xml">
+	    <addNotNullConstraint columnName="id" tableName="MEAL_EVALUATION" />
+		<addPrimaryKey columnNames="id" constraintName="MEAL_EVALUATION_PK" tableName="MEAL_EVALUATION"  /> 
+	</changeSet>
 </databaseChangeLog>
