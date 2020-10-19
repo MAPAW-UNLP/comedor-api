@@ -17,4 +17,7 @@
 		<createSequence sequenceName="SEQ_INGREDIENT_RECIPE" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="05.c" author="fiaccarino" logicalFilePath="05_ingredient_recipe.xml">
+		<modifyDataType  columnName="name" newDataType="VARCHAR2(200)" tableName="INGREDIENT_RECIPE"/>
+	</changeSet>
 </databaseChangeLog>

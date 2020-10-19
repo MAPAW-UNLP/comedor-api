@@ -35,5 +35,8 @@
 		<column name="suitable_for_vegetarians" type="boolean"/>  
   	</addColumn>  
 
-</changeSet>
+	</changeSet>
+	<changeSet id="07.e" author="fiaccarino" logicalFilePath="07_meal.xml">
+		<modifyDataType  columnName="name" newDataType="VARCHAR2(200)" tableName="MEAL"/>
+	</changeSet>
 </databaseChangeLog>

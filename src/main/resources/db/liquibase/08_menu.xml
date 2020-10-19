@@ -22,4 +22,7 @@
 		<createSequence sequenceName="SEQ_MENU" cycle="false" minValue="1"
 			maxValue="999999999999999" startValue="1" incrementBy="1" cacheSize="0" />
 	</changeSet>
+	<changeSet id="08.c" author="fiaccarino" logicalFilePath="08_menu.xml">
+		<modifyDataType  columnName="name" newDataType="VARCHAR2(200)" tableName="MENU"/>
+    </changeSet>  
 </databaseChangeLog>
