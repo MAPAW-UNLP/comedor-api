@@ -38,6 +38,7 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		dto.setName(entity.getName());
 		dto.setCurrentStock(entity.getCurrentStock());
 		dto.setDate(entity.getDate());
+		dto.setUnitPrice(entity.getUnitPrice());
 		dto.setKitchenSite(kitchenService.createDTO(entity.getKitchenSite()));
 		dto.setMeal(mealService.createDTO(entity.getMeal()));
 		return dto;
