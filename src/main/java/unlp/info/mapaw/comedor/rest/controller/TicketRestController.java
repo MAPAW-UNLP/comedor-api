@@ -50,12 +50,12 @@ public class TicketRestController extends AbstractRestController<TicketDTO> {
 				.body(service.buy(shoppingCart));
 	}
 	
-	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-	@GetMapping(value="/pending",  produces = { "application/json" })
-	public ResponseEntity<Collection<TicketDTO>> pendings() {
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-				.body(service.getPending());
-	} 
-	
+//	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+//	@GetMapping(value="/pending",  produces = { "application/json" })
+//	public ResponseEntity<Collection<TicketDTO>> pendings() {
+//		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+//				.body(service.getPending());
+//	} 
+//	
 
 }

@@ -73,6 +73,15 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 	}
 
 	public List<MenuDTO> getBySearch(MenuSearchDTO search) {
+		if (search.getDate() == null) {
+			throw new ServiceException("Date is required");
+		}
+		if (search.getKitchenSite() == null) {
+			throw new ServiceException("Kitchen Site is required");
+		}
+		if (crudService.findOne(KitchenSite.class, search.getKitchenSite().getId()) == null) {
+			throw new ServiceException("Kitchen Site not exists");
+		}
 		List<Menu> menus = new ArrayList<>();
 		if (this.getUsuarioLogueado().isClient())
 			menus = menuRepository.getBySearchFilteringForUser(search, this.getUsuarioLogueado().getUser());

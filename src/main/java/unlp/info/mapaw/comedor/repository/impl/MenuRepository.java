@@ -22,7 +22,7 @@ public class MenuRepository implements IMenuRepositoy {
 	@Override
 	public List<Menu> getBySearchFilteringForUser(MenuSearchDTO search, User user) {
 		Query query = entityManager.createQuery(
-				"select o from Menu o where o.kitchenSite.id = :idKitchenSite and year(o.date) = year(:fecha) and month(o.date) = month(:fecha) and day(o.date) = day(:fecha) and o.id not in (select t.menu.id from Ticket t where t.client.id = :idClient and year(t.menu.date) = year(o.date) and month(t.menu.date) = month(o.date) and day(t.menu.date) = day(o.date))",
+				"select o from Menu o where o.kitchenSite.id = :idKitchenSite and year(cast(o.date as date)) = year(cast(:fecha as date)) and month(cast(o.date as date)) = month(cast(:fecha as date)) and day(cast(o.date as date)) = day(cast(:fecha as date)) and o.id not in (select t.menu.id from Ticket t where t.client.id = :idClient and year(cast(t.menu.date as date)) = year(cast(o.date as date)) and month(cast(t.menu.date as date)) = month(cast(o.date as date)) and day(cast(t.menu.date as date)) = day(cast(o.date as date)))",
 				Menu.class);
 		query.setParameter("idKitchenSite", search.getKitchenSite().getId());
 		query.setParameter("fecha", search.getDate());
