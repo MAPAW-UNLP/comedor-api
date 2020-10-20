@@ -21,7 +21,7 @@ public class TicketRepository implements ITicketRepository {
 	@Override
 	public Ticket getByDate(Date date) {
 		Query query = entityManager.createQuery(
-				"select o from Ticket o where year(o.menu.date) = year(:fecha) and month(o.menu.date) = month(:fecha) and day(o.menu.date) = day(:fecha)",
+				"select o from Ticket o where year(cast(o.menu.date as date)) = year(cast(:fecha as date)) and month(cast(o.menu.date as date)) = month(cast(:fecha as date)) and day(cast(o.menu.date as date)) = day(cast(:fecha as date))",
 				Ticket.class);
 		query.setParameter("fecha", date);
 		List<Ticket> tickets = query.getResultList();
