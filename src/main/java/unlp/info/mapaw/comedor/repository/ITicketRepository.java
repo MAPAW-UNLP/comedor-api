@@ -4,11 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import unlp.info.mapaw.comedor.domain.Ticket;
+import unlp.info.mapaw.comedor.domain.User;
 
 public interface ITicketRepository {
 	
-	Ticket getByDate(Date date);
+	Ticket getByDateAndUser(Date date, User user);
 	
-	List<Ticket> getPendings();
+	List<Ticket> getPendings(User user);
 
 }

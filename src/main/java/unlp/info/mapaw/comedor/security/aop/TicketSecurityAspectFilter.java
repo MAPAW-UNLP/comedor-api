@@ -48,11 +48,6 @@ public class TicketSecurityAspectFilter {
 	    activateFindFilter(clase);
 	}
 
-	@Before("execution(* unlp.info.mapaw.comedor.repository.ITicketRepository.*(Class,..)) && args(clase,..)")
-	public void filterTicketRepository(JoinPoint joinPoint, Class<?> clase) {
-	    activateFindFilter(clase);
-	}
-	
 	private SecuredUser getUsuarioLogueado() {
 		return (SecuredUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	}

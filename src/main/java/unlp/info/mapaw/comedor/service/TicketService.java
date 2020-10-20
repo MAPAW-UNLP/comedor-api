@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.Menu;
 import unlp.info.mapaw.comedor.domain.Ticket;
+import unlp.info.mapaw.comedor.domain.User;
 import unlp.info.mapaw.comedor.dto.ItemShoppingCartDTO;
 import unlp.info.mapaw.comedor.dto.ShoppingCartDTO;
 import unlp.info.mapaw.comedor.dto.TicketDTO;
@@ -85,16 +86,21 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 
 	public List<TicketDTO> getPending() {
 		List<TicketDTO> dtos = new ArrayList<TicketDTO>();
-		for (Ticket ticket : repository.getPendings()) {
+		User user = this.getUsuarioLogueado().isClient() ? this.getUsuarioLogueado().getUser() : null;
+		for (Ticket ticket : repository.getPendings(user)) {
 			dtos.add(this.createDTO(ticket));
 		}
 		return dtos;
+
 	}
 
 	private void validateTicketsInDate(Date date) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		if (repository.getByDate(date) != null)
-			throw new ServiceException("Already have a ticket for date " + format.format(date));
+		if (this.getUsuarioLogueado().isClient()) {
+			if (repository.getByDateAndUser(date, this.getUsuarioLogueado().getUser()) != null) {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				throw new ServiceException("Already have a ticket for date " + format.format(date));
+			}
+		}
 
 	}
 

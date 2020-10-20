@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import unlp.info.mapaw.comedor.domain.Ticket;
+import unlp.info.mapaw.comedor.domain.User;
 import unlp.info.mapaw.comedor.repository.ITicketRepository;
 
 @Repository
@@ -19,11 +20,12 @@ public class TicketRepository implements ITicketRepository {
 	private EntityManager entityManager;
 
 	@Override
-	public Ticket getByDate(Date date) {
+	public Ticket getByDateAndUser(Date date, User user) {
 		Query query = entityManager.createQuery(
-				"select o from Ticket o where year(cast(o.menu.date as date)) = year(cast(:fecha as date)) and month(cast(o.menu.date as date)) = month(cast(:fecha as date)) and day(cast(o.menu.date as date)) = day(cast(:fecha as date))",
+				"select o from Ticket o where o.client.id = :userId and year(cast(o.menu.date as date)) = year(cast(:fecha as date)) and month(cast(o.menu.date as date)) = month(cast(:fecha as date)) and day(cast(o.menu.date as date)) = day(cast(:fecha as date))",
 				Ticket.class);
 		query.setParameter("fecha", date);
+		query.setParameter("userId", user.getId());
 		List<Ticket> tickets = query.getResultList();
 		if (tickets.isEmpty())
 			return null;
@@ -31,8 +33,13 @@ public class TicketRepository implements ITicketRepository {
 	}
 
 	@Override
-	public List<Ticket> getPendings() {
-		Query query = entityManager.createQuery("select o from Ticket o where o.consumed = false", Ticket.class);
+	public List<Ticket> getPendings(User user) {
+		String queryString = "select o from Ticket o where o.consumed = false ";
+		if (user != null)
+			queryString = queryString + "and o.client.id = :userId";
+		Query query = entityManager.createQuery(queryString, Ticket.class);
+		if (user != null)
+			query.setParameter("userId", user.getId());
 		return query.getResultList();
 	}
 
