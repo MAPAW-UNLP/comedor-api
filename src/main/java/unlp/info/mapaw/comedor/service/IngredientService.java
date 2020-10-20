@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import unlp.info.mapaw.comedor.domain.Ingredient;
 import unlp.info.mapaw.comedor.domain.IngredientRecipe;
 import unlp.info.mapaw.comedor.dto.IngredientDTO;
+import unlp.info.mapaw.comedor.exception.ServiceException;
 
 @Service
 public class IngredientService extends AbstractEntityService<IngredientDTO, Ingredient> {
@@ -23,7 +24,6 @@ public class IngredientService extends AbstractEntityService<IngredientDTO, Ingr
 	@Override
 	protected Ingredient addCustomPropertiesToEntity(IngredientDTO dto, Ingredient entity) {
 		entity.setQuantity(dto.getQuantity());
-		// Se busca el ingrediente recipe en la base
 		entity.setRecipe(this.crudService.findOne(IngredientRecipe.class, dto.getRecipe().getId()));
 		return entity;
 	}
@@ -36,6 +36,14 @@ public class IngredientService extends AbstractEntityService<IngredientDTO, Ingr
 	@Override
 	protected Ingredient createEmptyEntity() {
 		return new Ingredient();
+	}
+
+	@Override
+	protected void validateDTO(IngredientDTO dto) {
+		if (dto.getRecipe() == null)
+			throw new ServiceException("Ingredient Recipe is required");
+		if (dto.getQuantity() == null)
+			throw new ServiceException("Quantity is required");
 	}
 
 }

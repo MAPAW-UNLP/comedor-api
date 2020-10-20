@@ -17,15 +17,19 @@ public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends A
 
 	@Autowired
 	protected AbstractCRUDService crudService;
-	
+
 	protected abstract DTO addCustomPropertiesToDTO(T entity, DTO dto);
-	
+
 	protected abstract T addCustomPropertiesToEntity(DTO dto, T entity);
-	
+
 	protected abstract DTO createEmptyDTO();
-	
+
 	protected abstract T createEmptyEntity();
-	
+
+	protected void validateDTO(DTO dto) {
+
+	}
+
 	public List<DTO> getAll(Class<T> entityClass) {
 		List<DTO> lista = new ArrayList<DTO>();
 		for (T entity : crudService.findAll(entityClass)) {
@@ -38,36 +42,39 @@ public abstract class AbstractEntityService<DTO extends AbstractDTO, T extends A
 		T entity = crudService.findOne(entityClass, id);
 		return createDTO(entity);
 	}
-	
+
 	protected DTO createDTO(T entity) {
 		DTO dto = createEmptyDTO();
 		dto.setId(entity.getId());
 		this.addCustomPropertiesToDTO(entity, dto);
 		return dto;
 	}
-	
+
 	public DTO save(DTO dto) {
+		this.validateDTO(dto);
 		T entity = this.createEntityFromDTO(dto);
 		entity = crudService.save(entity);
 		return createDTO(entity);
 	}
 
 	protected T createEntityFromDTO(DTO dto) {
+		this.validateDTO(dto);
 		T entity = this.createEmptyEntity();
 		this.addCustomPropertiesToEntity(dto, entity);
 		return entity;
 	}
-	
+
 	public DTO update(Class<T> entityClass, DTO dto) {
+		this.validateDTO(dto);
 		T entity = this.crudService.findOne(entityClass, dto.getId());
 		crudService.save(entity);
 		return createDTO(entity);
 	}
-	
+
 	public void delete(Class<T> entityClass, Long id) {
 		crudService.delete(entityClass, id);
 	}
-	
+
 	protected SecuredUser getUsuarioLogueado() {
 		return (SecuredUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	}

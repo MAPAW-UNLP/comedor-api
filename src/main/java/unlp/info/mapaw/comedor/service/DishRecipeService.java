@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.DishRecipe;
 import unlp.info.mapaw.comedor.domain.Ingredient;
+import unlp.info.mapaw.comedor.dto.DishDTO;
 import unlp.info.mapaw.comedor.dto.DishRecipeDTO;
 import unlp.info.mapaw.comedor.dto.IngredientDTO;
+import unlp.info.mapaw.comedor.exception.ServiceException;
 
 @Service
 public class DishRecipeService extends AbstractEntityService<DishRecipeDTO, DishRecipe> {
@@ -40,5 +42,11 @@ public class DishRecipeService extends AbstractEntityService<DishRecipeDTO, Dish
 			entity.getIngredients().add(ingredientService.createEntityFromDTO(ingredient));
 		}
 		return entity;
+	}
+
+	@Override
+	protected void validateDTO(DishRecipeDTO dto) {
+		if (dto.getName() == null)
+			throw new ServiceException("Name is required");
 	}
 }
