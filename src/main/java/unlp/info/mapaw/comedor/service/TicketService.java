@@ -1,6 +1,8 @@
 package unlp.info.mapaw.comedor.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import unlp.info.mapaw.comedor.dto.ItemShoppingCartDTO;
 import unlp.info.mapaw.comedor.dto.ShoppingCartDTO;
 import unlp.info.mapaw.comedor.dto.TicketDTO;
 import unlp.info.mapaw.comedor.exception.ServiceException;
+import unlp.info.mapaw.comedor.repository.ITicketRepository;
 import unlp.info.mapaw.comedor.utils.RandomString;
 
 @Service
@@ -19,6 +22,9 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 	
 	@Autowired
 	private MenuService menuService;
+	
+	@Autowired
+	private ITicketRepository repository;
 
 	@Override
 	protected TicketDTO addCustomPropertiesToDTO(Ticket entity, TicketDTO dto) {
@@ -53,6 +59,7 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 			List<Ticket> tickets = new ArrayList<>();
 			for (ItemShoppingCartDTO item : shoppingCartDTO.getItems()) {
 				Menu menu = crudService.findOne(Menu.class, item.getMenu().getId());
+				this.validateTicketsInDate(menu.getDate());
 				if (!this.menuHasStock(menu))
 					throw new ServiceException("Menu has no more stock");
 				menu.discountStock();
@@ -74,6 +81,13 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 			throw new ServiceException("No items for buys");
 		}
 
+	}
+
+	private void validateTicketsInDate(Date date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		if (repository.getByDate(date) != null)
+			throw new ServiceException("Already have a ticket for date " + format.format(date));
+		
 	}
 
 	private boolean menuHasStock(Menu menu) {
