@@ -25,4 +25,24 @@
         	<column  name="email"  value="employees@gmail.com"/>
     	</insert>  
 	</changeSet>
+	<changeSet id="99.b" author="fiaccarino" logicalFilePath="user_data.xml">
+		<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="77777777"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Cliente 2"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="cliente@gmail.com"/>
+        	<column  name="condition"  value="NO_DOCENTE"/>
+    	</insert>
+    	<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="66666666"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Cliente 3"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="cliente@gmail.com"/>
+        	<column  name="condition"  value="DOCENTE"/>
+    	</insert>
+	</changeSet>
 </databaseChangeLog>

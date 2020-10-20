@@ -30,4 +30,10 @@ public class TicketRepository implements ITicketRepository {
 		return tickets.get(0);
 	}
 
+	@Override
+	public List<Ticket> getPendings() {
+		Query query = entityManager.createQuery("select o from Ticket o where o.consumed = false", Ticket.class);
+		return query.getResultList();
+	}
+
 }

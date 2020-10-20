@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,13 @@ public class TicketRestController extends AbstractRestController<TicketDTO> {
 	public ResponseEntity<Collection<TicketDTO>> buyTicket(@RequestBody ShoppingCartDTO shoppingCart) {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 				.body(service.buy(shoppingCart));
+	}
+	
+	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+	@GetMapping(value="/pending",  produces = { "application/json" })
+	public ResponseEntity<Collection<TicketDTO>> pendings() {
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+				.body(service.getPending());
 	} 
 	
 

@@ -19,10 +19,10 @@ import unlp.info.mapaw.comedor.utils.RandomString;
 
 @Service
 public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
-	
+
 	@Autowired
 	private MenuService menuService;
-	
+
 	@Autowired
 	private ITicketRepository repository;
 
@@ -40,7 +40,7 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 	@Override
 	protected Ticket addCustomPropertiesToEntity(TicketDTO dto, Ticket entity) {
 		throw new ServiceException("Not Supported");
-		//return entity;
+		// return entity;
 	}
 
 	@Override
@@ -83,11 +83,19 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 
 	}
 
+	public List<TicketDTO> getPending() {
+		List<TicketDTO> dtos = new ArrayList<TicketDTO>();
+		for (Ticket ticket : repository.getPendings()) {
+			dtos.add(this.createDTO(ticket));
+		}
+		return dtos;
+	}
+
 	private void validateTicketsInDate(Date date) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		if (repository.getByDate(date) != null)
 			throw new ServiceException("Already have a ticket for date " + format.format(date));
-		
+
 	}
 
 	private boolean menuHasStock(Menu menu) {
