@@ -38,7 +38,7 @@ public class MealService extends AbstractEntityService<MealDTO,Meal>{
 		entity.setSuitableForVegetarians(dto.isSuitableForVegetarians());
 		entity.setObservations(dto.getObservations());
 		for(DishDTO dishDTO: dto.getItems()) {
-			entity.getItems().add(this.crudService.findOne(Dish.class, dishDTO.getId()));
+			entity.getItems().add(dishService.createEntityFromDTO(dishDTO));
 		}
 		return entity;
 	}
