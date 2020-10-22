@@ -43,4 +43,14 @@ public class TicketRepository implements ITicketRepository {
 		return query.getResultList();
 	}
 
+	@Override
+	public Ticket getTicketByNumber(String ticketNumber) {
+		String queryString = "select o from Ticket o where o.number = :ticketNumber";
+		Query query = entityManager.createQuery(queryString, Ticket.class);
+		List<Ticket> tickets = query.getResultList();
+		if (tickets.isEmpty())
+			return null;
+		return tickets.get(0);
+	}
+
 }

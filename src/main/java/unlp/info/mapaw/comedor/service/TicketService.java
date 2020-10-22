@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ import unlp.info.mapaw.comedor.utils.RandomString;
 
 @Service
 public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
+
+	private static org.slf4j.Logger logger = LoggerFactory.getLogger(TicketService.class);
 
 	@Autowired
 	private MenuService menuService;
@@ -94,6 +97,21 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 
 	}
 
+	public Boolean isTicketNumberValid(String ticketNumber) {
+		Ticket ticket = repository.getTicketByNumber(ticketNumber);
+		if (ticket == null || (ticket != null && ticket.isConsumed()))
+			return false;
+		return true;
+	}
+
+	public synchronized void consumeTicket(String ticketNumber) {
+		Ticket ticket = repository.getTicketByNumber(ticketNumber);
+		if (ticket == null || (ticket != null && ticket.isConsumed()))
+			throw new ServiceException("Ticket is not valid or was already consumed");
+		ticket.setConsumed(true);
+		crudService.save(ticket);
+	}
+
 	private void validateTicketsInDate(Date date) {
 		if (this.getUsuarioLogueado().isClient()) {
 			if (repository.getByDateAndUser(date, this.getUsuarioLogueado().getUser()) != null) {
@@ -105,6 +123,7 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 	}
 
 	private boolean menuHasStock(Menu menu) {
+		logger.info("Menu:" + menu.getId() + " Stock: " + menu.getCurrentStock());
 		return menu.getCurrentStock() > 0;
 	}
 

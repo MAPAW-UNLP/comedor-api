@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,21 +42,34 @@ public class TicketRestController extends AbstractRestController<TicketDTO> {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 				.body(service.get(Ticket.class, id));
 	}
-	
+
 	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 	@PreAuthorize("hasRole('CLIENT')")
-	@PostMapping(value="/buy", consumes = { "application/json" }, produces = { "application/json" })
+	@PostMapping(value = "/buy", consumes = { "application/json" }, produces = { "application/json" })
 	public ResponseEntity<Collection<TicketDTO>> buyTicket(@RequestBody ShoppingCartDTO shoppingCart) {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 				.body(service.buy(shoppingCart));
 	}
-	
+
 //	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-//	@GetMapping(value="/pending",  produces = { "application/json" })
+//	@GetMapping(value = "/pending", produces = { "application/json" })
 //	public ResponseEntity<Collection<TicketDTO>> pendings() {
-//		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-//				.body(service.getPending());
-//	} 
-//	
+//		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(service.getPending());
+//	}
+//
+//	@PreAuthorize("hasRole('EMPLOYEE')")
+//	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+//	@PostMapping(value = "/validate")
+//	public ResponseEntity<Boolean> validate(@RequestParam String ticketNumber) {
+//		return ResponseEntity.status(HttpStatus.OK).body(service.isTicketNumberValid(ticketNumber));
+//	}
+//
+//	@PreAuthorize("hasRole('EMPLOYEE')")
+//	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+//	@PostMapping(value = "/consume")
+//	public ResponseEntity consume(@RequestParam String ticketNumber) {
+//		service.consumeTicket(ticketNumber);
+//		return new ResponseEntity(HttpStatus.OK);
+//	}
 
 }
