@@ -38,7 +38,7 @@ public class TicketSecurityAspectFilter {
 	}
 	
 	
-	@Before("execution(* unlp.info.mapaw.comedor.service.*.getAll(Class,..)) && args(clase,..)")
+	@Before("execution(* unlp.info.mapaw.comedor.service.abstracts.AbstractCRUDService.findAll(Class,..)) && args(clase,..)")
 	public void filterServiceFindAll(JoinPoint joinPoint, Class<?> clase) {
 	    activateFindFilter(clase);
 	}

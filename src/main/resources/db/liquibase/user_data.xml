@@ -45,4 +45,42 @@
         	<column  name="condition"  value="DOCENTE"/>
     	</insert>
 	</changeSet>
+	<changeSet id="99.c" author="fiaccarino" logicalFilePath="user_data.xml">
+		<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="39743245"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Andrés Rodríguez"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="andres@gmail.com"/>
+        	<column  name="condition"  value="ESTUDIANTE"/>
+    	</insert>
+    	<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="37536556"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Patricio Hondagneu Roig"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="pato@gmail.com"/>
+        	<column  name="condition"  value="ESTUDIANTE"/>
+    	</insert>
+    	<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="41430157"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Karim Emilio"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="karim@gmail.com"/>
+        	<column  name="condition"  value="ESTUDIANTE"/>
+    	</insert>
+    	<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="34305375"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Facundo Iaccarino"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="facundo@gmail.com"/>
+        	<column  name="condition"  value="ESTUDIANTE"/>
+    	</insert>
+	</changeSet>
 </databaseChangeLog>

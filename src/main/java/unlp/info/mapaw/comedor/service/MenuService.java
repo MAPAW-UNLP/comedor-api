@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.KitchenSite;
 import unlp.info.mapaw.comedor.domain.Meal;
 import unlp.info.mapaw.comedor.domain.Menu;
+import unlp.info.mapaw.comedor.domain.Ticket;
 import unlp.info.mapaw.comedor.dto.CreateMenusDTO;
 import unlp.info.mapaw.comedor.dto.KitchenSiteDTO;
 import unlp.info.mapaw.comedor.dto.MenuDTO;
@@ -28,6 +30,9 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 
 	@Autowired
 	private IMenuRepositoy menuRepository;
+
+	@Autowired
+	private TicketService ticketService;
 
 	@Override
 	protected MenuDTO addCustomPropertiesToDTO(Menu entity, MenuDTO dto) {
@@ -64,12 +69,31 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 	@Override
 	public List<MenuDTO> getAll(Class<Menu> entityClass) {
 		List<MenuDTO> lista = new ArrayList<MenuDTO>();
-		for (Menu entity : this.getUsuarioLogueado().isClient()
-				? menuRepository.getAllFilteringForUser(this.getUsuarioLogueado().getUser())
-				: crudService.findAll(entityClass)) {
-			lista.add(createDTO(entity));
+		List<Ticket> tickets = crudService.findAll(Ticket.class);
+		List<Date> oldMenus = this.getDatesForTicket(tickets);
+		for (Menu entity : crudService.findAll(entityClass)) {
+			if (!this.anyDateIsSameDay(oldMenus, entity.getDate())) {
+				lista.add(createDTO(entity));
+			}
 		}
 		return lista;
+	}
+
+	private boolean anyDateIsSameDay(List<Date> oldMenus, Date fecha) {
+		for (Date date : oldMenus) {
+			if (DateUtils.isSameDay(date, fecha))
+				return true;
+		}
+		return false;
+	}
+
+	private List<Date> getDatesForTicket(List<Ticket> tickets) {
+		List<Date> menuses = new ArrayList<Date>();
+		for (Ticket ti : tickets) {
+			menuses.add(ti.getMenu().getDate());
+		}
+		return menuses;
+
 	}
 
 	public List<MenuDTO> getBySearch(MenuSearchDTO search) {
@@ -82,14 +106,11 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		if (crudService.findOne(KitchenSite.class, search.getKitchenSite().getId()) == null) {
 			throw new ServiceException("Kitchen Site not exists");
 		}
-		List<Menu> menus = new ArrayList<>();
-		if (this.getUsuarioLogueado().isClient())
-			menus = menuRepository.getBySearchFilteringForUser(search, this.getUsuarioLogueado().getUser());
-		else
-			menus = menuRepository.getBySearch(search);
 		List<MenuDTO> menusDTO = new ArrayList<MenuDTO>();
-		for (Menu menu : menus) {
-			menusDTO.add(this.createDTO(menu));
+		for (MenuDTO menu : this.getAll(Menu.class)) {
+			if (DateUtils.isSameDay(menu.getDate(), search.getDate())
+					&& menu.getKitchenSite().getId() == search.getKitchenSite().getId())
+				menusDTO.add(menu);
 		}
 		return menusDTO;
 	}
