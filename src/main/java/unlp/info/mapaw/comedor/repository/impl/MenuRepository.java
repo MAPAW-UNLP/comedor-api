@@ -9,8 +9,6 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import unlp.info.mapaw.comedor.domain.Menu;
-import unlp.info.mapaw.comedor.domain.User;
-import unlp.info.mapaw.comedor.dto.MenuSearchDTO;
 import unlp.info.mapaw.comedor.repository.IMenuRepositoy;
 
 @Repository
@@ -20,11 +18,10 @@ public class MenuRepository implements IMenuRepositoy {
 	private EntityManager entityManager;
 
 	@Override
-	public List<Menu> getBySearch(MenuSearchDTO search) {
+	public List<Menu> getWithStock() {
 		Query query = entityManager.createQuery(
-				"select o from Menu o where o.currentStock > 0 and o.kitchenSite.id = :idKitchenSite and o.date = :fecha", Menu.class);
-		query.setParameter("idKitchenSite", search.getKitchenSite().getId());
-		query.setParameter("fecha", search.getDate());
+				"select o from Menu o where o.currentStock > 0", Menu.class);
 		return query.getResultList();
 	}
+
 }

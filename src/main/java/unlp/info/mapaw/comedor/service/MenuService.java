@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import unlp.info.mapaw.comedor.domain.KitchenSite;
@@ -71,7 +72,7 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		List<MenuDTO> lista = new ArrayList<MenuDTO>();
 		List<Ticket> tickets = crudService.findAll(Ticket.class);
 		List<Date> oldMenus = this.getDatesForTicket(tickets);
-		for (Menu entity : crudService.findAll(entityClass)) {
+		for (Menu entity : menuRepository.getWithStock()) {
 			if (!this.anyDateIsSameDay(oldMenus, entity.getDate())) {
 				lista.add(createDTO(entity));
 			}
