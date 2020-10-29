@@ -83,4 +83,15 @@
         	<column  name="condition"  value="ESTUDIANTE"/>
     	</insert>
 	</changeSet>
+	<changeSet id="99.d" author="fiaccarino" logicalFilePath="user_data.xml">
+		<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="38679198"/>
+        	<column  name="password"  value="$2y$12$nS.VTaRxnkQhZtYfUj81tOh07bUbdfywg1HPBPO2S9eeNCqOWQi8K"/>
+        	<column  name="fullname"  value="Juan Cruz Gardey"/>
+        	<column  name="role"  value="CLIENT"/>
+        	<column  name="email"  value="juancruz@gmail.com"/>
+        	<column  name="condition"  value="ESTUDIANTE"/>
+    	</insert>
+	</changeSet>
 </databaseChangeLog>
