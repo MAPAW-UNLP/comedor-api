@@ -34,12 +34,14 @@ public class TicketRepository implements ITicketRepository {
 
 	@Override
 	public List<Ticket> getPendings(User user) {
-		String queryString = "select o from Ticket o where o.consumed = false ";
+		Date hoy = new Date();
+		String queryString = "select o from Ticket o where o.consumed = false and year(cast(o.menu.date as date)) >= year(cast(:hoy as date)) and month(cast(o.menu.date as date)) >= month(cast(:hoy as date)) and day(cast(o.menu.date as date)) >= day(cast(:hoy as date)) ";
 		if (user != null)
 			queryString = queryString + "and o.client.id = :userId";
 		Query query = entityManager.createQuery(queryString, Ticket.class);
 		if (user != null)
 			query.setParameter("userId", user.getId());
+		query.setParameter("hoy", hoy);
 		return query.getResultList();
 	}
 
