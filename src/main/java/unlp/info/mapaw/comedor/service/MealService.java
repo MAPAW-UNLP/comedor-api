@@ -9,7 +9,7 @@ import unlp.info.mapaw.comedor.dto.DishDTO;
 import unlp.info.mapaw.comedor.dto.MealDTO;
 
 @Service
-public class MealService extends AbstractEntityService<MealDTO,Meal>{
+public class MealService extends AbstractEntityService<MealDTO, Meal> {
 
 	@Autowired
 	private DishService dishService;
@@ -20,7 +20,7 @@ public class MealService extends AbstractEntityService<MealDTO,Meal>{
 		dto.setSuitableForCeliacs(entity.isSuitableForCeliacs());
 		dto.setSuitableForVegetarians(entity.isSuitableForVegetarians());
 		dto.setObservations(entity.getObservations());
-		for(Dish dish: entity.getItems()) {
+		for (Dish dish : entity.getItems()) {
 			dto.getItems().add(dishService.createDTO(dish));
 		}
 		return dto;
@@ -37,7 +37,7 @@ public class MealService extends AbstractEntityService<MealDTO,Meal>{
 		entity.setSuitableForCeliacs(dto.isSuitableForCeliacs());
 		entity.setSuitableForVegetarians(dto.isSuitableForVegetarians());
 		entity.setObservations(dto.getObservations());
-		for(DishDTO dishDTO: dto.getItems()) {
+		for (DishDTO dishDTO : dto.getItems()) {
 			entity.getItems().add(dishService.createEntityFromDTO(dishDTO));
 		}
 		return entity;
@@ -47,5 +47,4 @@ public class MealService extends AbstractEntityService<MealDTO,Meal>{
 	protected Meal createEmptyEntity() {
 		return new Meal();
 	}
-	
 }
