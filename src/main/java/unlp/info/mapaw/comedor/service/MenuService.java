@@ -15,6 +15,7 @@ import unlp.info.mapaw.comedor.domain.Menu;
 import unlp.info.mapaw.comedor.domain.Ticket;
 import unlp.info.mapaw.comedor.dto.CreateMenusDTO;
 import unlp.info.mapaw.comedor.dto.KitchenSiteDTO;
+import unlp.info.mapaw.comedor.dto.MealReportDTO;
 import unlp.info.mapaw.comedor.dto.MenuDTO;
 import unlp.info.mapaw.comedor.dto.MenuSearchDTO;
 import unlp.info.mapaw.comedor.exception.ServiceException;
@@ -31,9 +32,6 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 
 	@Autowired
 	private IMenuRepositoy menuRepository;
-
-	@Autowired
-	private TicketService ticketService;
 
 	@Override
 	protected MenuDTO addCustomPropertiesToDTO(Menu entity, MenuDTO dto) {
@@ -160,5 +158,13 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		}
 
 	}
+	
+//	public List<MealReportDTO> a(){
+//		
+//		
+//		
+//		return null;
+//	}
+	
 
 }

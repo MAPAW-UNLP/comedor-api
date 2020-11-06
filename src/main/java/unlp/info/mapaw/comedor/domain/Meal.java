@@ -12,22 +12,22 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="MEAL")
+@Table(name = "MEAL")
 @SequenceGenerator(name = "SEQ", sequenceName = "SEQ_MEAL", allocationSize = 1)
 public class Meal extends AbstractEntity {
 
 	private String name;
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval=true)
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_meal")
-	private List<Dish> items= new ArrayList<>();
-	
-	@Column(name="suitable_for_vegetarians")
+	private List<Dish> items = new ArrayList<>();
+
+	@Column(name = "suitable_for_vegetarians")
 	private boolean suitableForVegetarians;
-	
-	@Column(name="suitable_for_celiacs")
+
+	@Column(name = "suitable_for_celiacs")
 	private boolean suitableForCeliacs;
-	
+
 	private String observations;
 
 	public String getName() {
@@ -68,5 +68,13 @@ public class Meal extends AbstractEntity {
 
 	public void setObservations(String observations) {
 		this.observations = observations;
+	}
+
+	public List<Ingredient> getIngredients() {
+		List<Ingredient> ingredients = new ArrayList<Ingredient>();
+		for (Dish dish : this.getItems()) {
+			ingredients.addAll(dish.getRecipe().getIngredients());
+		}
+		return ingredients;
 	}
 }

@@ -20,57 +20,52 @@ import unlp.info.mapaw.comedor.domain.Menu;
 import unlp.info.mapaw.comedor.dto.CreateMenusDTO;
 import unlp.info.mapaw.comedor.dto.MenuDTO;
 import unlp.info.mapaw.comedor.dto.MenuSearchDTO;
+import unlp.info.mapaw.comedor.dto.RequestReportSalesDTO;
 import unlp.info.mapaw.comedor.rest.controller.abstractClass.AbstractRestController;
 import unlp.info.mapaw.comedor.service.MenuService;
 
 @Tag(name = "Menu", description = "API de menu")
 @RestController
 @RequestMapping("/api/menu")
-public class MenuRestController extends AbstractRestController<MenuDTO>{
+public class MenuRestController extends AbstractRestController<MenuDTO> {
 
-	@Autowired 
+	@Autowired
 	private MenuService service;
-	
+
 	public ResponseEntity<Collection<MenuDTO>> getAll() {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.getAll(Menu.class));
+				.body(service.getAll(Menu.class));
 	}
-	
+
 	@Override
 	public ResponseEntity<MenuDTO> getById(@PathVariable("id") Long id) {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.get(Menu.class, id));
-	}
-	
-	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-	@PostMapping(value="/search", consumes = { "application/json" }, produces = { "application/json" })
-	public ResponseEntity<Collection<MenuDTO>> getBySearch(@RequestBody MenuSearchDTO search){
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.getBySearch(search));
-	}
-	
-	@PreAuthorize("hasRole('EMPLOYEE')")
-	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-	@PostMapping(value="/create", consumes = { "application/json" }, produces = { "application/json" })
-	public ResponseEntity<Collection<MenuDTO>> create(@RequestBody CreateMenusDTO createMenusDTO){
-		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-		        .body(service.createFrom(createMenusDTO));
+				.body(service.get(Menu.class, id));
 	}
 
-	//Se comenta porque la generacion de Menu es atravez de otro DTO (Debe recibir MealDTO, List<Date> fechas, y List<KitchenSite> sedes)
-//	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+	@PostMapping(value = "/search", consumes = { "application/json" }, produces = { "application/json" })
+	public ResponseEntity<Collection<MenuDTO>> getBySearch(@RequestBody MenuSearchDTO search) {
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+				.body(service.getBySearch(search));
+	}
+
+	@PreAuthorize("hasRole('EMPLOYEE')")
+	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+	@PostMapping(value = "/create", consumes = { "application/json" }, produces = { "application/json" })
+	public ResponseEntity<Collection<MenuDTO>> create(@RequestBody CreateMenusDTO createMenusDTO) {
+		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+				.body(service.createFrom(createMenusDTO));
+	}
+
 //	@PreAuthorize("hasRole('EMPLOYEE')")
-//	@PutMapping(value="/save", consumes = { "application/json" }, produces = { "application/json" })
-//	public ResponseEntity<MenuDTO> save( @RequestBody MenuDTO dto) {
-//		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-//		        .body(service.save(dto));
-//	}
-	
 //	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-//	@PreAuthorize("hasRole('EMPLOYEE')")
-//	@PutMapping(value="/create", consumes = { "application/json" }, produces = { "application/json" })
-//	public ResponseEntity<MenuDTO> create( @RequestBody MenuDTO dto) {
-//		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-//		        .body(service.save(dto));
+//	@PostMapping(value = "/reportSales", produces = { "application/json" })
+//	public ResponseEntity<Collection<Object>> reportSalesForDateAndKitchetSite(@RequestBody RequestReportSalesDTO dto) {
+//		
+//		
+//		
+//		return null;
+//		
 //	}
 }

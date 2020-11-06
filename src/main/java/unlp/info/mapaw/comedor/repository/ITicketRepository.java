@@ -13,5 +13,7 @@ public interface ITicketRepository {
 	List<Ticket> getPendings(User user);
 	
 	Ticket getTicketByNumber(String ticketNumber);
+	
+	List<Ticket> getByKitchenSiteAndDate(long idKitchenSite, Date date);
 
 }
