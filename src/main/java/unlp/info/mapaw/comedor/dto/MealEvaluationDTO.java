@@ -1,7 +1,5 @@
 package unlp.info.mapaw.comedor.dto;
 
-import unlp.info.mapaw.comedor.enums.EvaluationScoreEnum;
-
 public class MealEvaluationDTO extends AbstractDTO {
 
 	private long idMeal;
@@ -10,7 +8,7 @@ public class MealEvaluationDTO extends AbstractDTO {
 
 	private String comments;
 
-	private EvaluationScoreEnum score;
+	private int score;
 
 	public String getComments() {
 		return comments;
@@ -18,14 +16,6 @@ public class MealEvaluationDTO extends AbstractDTO {
 
 	public void setComments(String comments) {
 		this.comments = comments;
-	}
-
-	public EvaluationScoreEnum getScore() {
-		return score;
-	}
-
-	public void setScore(EvaluationScoreEnum score) {
-		this.score = score;
 	}
 
 	public long getIdMeal() {
@@ -42,6 +32,14 @@ public class MealEvaluationDTO extends AbstractDTO {
 
 	public void setIdClient(long idClient) {
 		this.idClient = idClient;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 }

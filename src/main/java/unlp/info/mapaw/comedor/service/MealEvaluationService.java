@@ -55,6 +55,8 @@ public class MealEvaluationService extends AbstractEntityService<MealEvaluationD
 		if (dto.getIdMeal() == 0) {
 			throw new ServiceException("Id meal is required");
 		}
+		if (dto.getScore() < 0 || dto.getScore() > 5)
+			throw new ServiceException("Score must between 0 and 5");
 		MealEvaluation entity = new MealEvaluation();
 		Meal meal = crudService.findOne(Meal.class, dto.getIdMeal());
 		entity.setMeal(meal);

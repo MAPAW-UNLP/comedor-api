@@ -2,14 +2,10 @@ package unlp.info.mapaw.comedor.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import unlp.info.mapaw.comedor.enums.EvaluationScoreEnum;
 
 @Entity
 @Table(name ="MEAL_EVALUATION")
@@ -26,9 +22,8 @@ public class MealEvaluation extends AbstractEntity {
 	
 	private String comments;
 	
-	@Enumerated(EnumType.STRING)
 	@Column
-	private EvaluationScoreEnum score;
+	private int score;
 
 	public Meal getMeal() {
 		return meal;
@@ -54,11 +49,11 @@ public class MealEvaluation extends AbstractEntity {
 		this.comments = comments;
 	}
 
-	public EvaluationScoreEnum getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(EvaluationScoreEnum score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 }

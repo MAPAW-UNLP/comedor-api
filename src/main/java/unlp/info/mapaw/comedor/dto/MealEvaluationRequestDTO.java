@@ -1,14 +1,12 @@
 package unlp.info.mapaw.comedor.dto;
 
-import unlp.info.mapaw.comedor.enums.EvaluationScoreEnum;
-
 public class MealEvaluationRequestDTO {
 
 	private long idMeal;
 
 	private String comments;
 
-	private EvaluationScoreEnum score;
+	private int score;
 
 	public long getIdMeal() {
 		return idMeal;
@@ -26,11 +24,11 @@ public class MealEvaluationRequestDTO {
 		this.comments = comments;
 	}
 
-	public EvaluationScoreEnum getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(EvaluationScoreEnum score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

@@ -23,4 +23,7 @@
 	    <addNotNullConstraint columnName="id" tableName="MEAL_EVALUATION" />
 		<addPrimaryKey columnNames="id" constraintName="MEAL_EVALUATION_PK" tableName="MEAL_EVALUATION"  /> 
 	</changeSet>
+	<changeSet id="09.d" author="fiaccarino" logicalFilePath="09_meal_evaluation.xml">
+	   <modifyDataType columnName="score" newDataType="NUMBER(1)" tableName="MEAL_EVALUATION"/>  
+	</changeSet>
 </databaseChangeLog>
