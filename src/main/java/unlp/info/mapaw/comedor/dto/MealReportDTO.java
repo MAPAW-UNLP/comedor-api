@@ -1,5 +1,6 @@
 package unlp.info.mapaw.comedor.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MealReportDTO {
@@ -8,7 +9,7 @@ public class MealReportDTO {
 	
 	private int cantSales;
 	
-	private List<IngredientReportDTO> ingredients;
+	private List<IngredientReportDTO> ingredients = new ArrayList<IngredientReportDTO>();
 
 	public String getName() {
 		return name;
