@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import unlp.info.mapaw.comedor.domain.Ticket;
+import unlp.info.mapaw.comedor.dto.SearchTicketDTO;
 import unlp.info.mapaw.comedor.dto.ShoppingCartDTO;
 import unlp.info.mapaw.comedor.dto.TicketDTO;
 import unlp.info.mapaw.comedor.rest.controller.abstractClass.AbstractRestController;
@@ -55,14 +56,14 @@ public class TicketRestController extends AbstractRestController<TicketDTO> {
 	public ResponseEntity<Collection<TicketDTO>> pendings() {
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(service.getPending());
 	}
-//
-//	@PreAuthorize("hasRole('EMPLOYEE')")
-//	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
-//	@PostMapping(value = "/validate")
-//	public ResponseEntity<Boolean> validate(@RequestParam String ticketNumber) {
-//		return ResponseEntity.status(HttpStatus.OK).body(service.isTicketNumberValid(ticketNumber));
-//	}
-//
+
+	@PreAuthorize("hasRole('EMPLOYEE')")
+	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
+	@PostMapping(value = "/search")
+	public ResponseEntity<TicketDTO> searchTicket(@RequestBody SearchTicketDTO searchTicketDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(service.getBySearch(searchTicketDTO));
+	}
+
 //	@PreAuthorize("hasRole('EMPLOYEE')")
 //	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 //	@PostMapping(value = "/consume")

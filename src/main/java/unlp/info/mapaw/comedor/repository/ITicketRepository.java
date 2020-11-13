@@ -15,5 +15,7 @@ public interface ITicketRepository {
 	Ticket getTicketByNumber(String ticketNumber);
 	
 	List<Ticket> getByKitchenSiteAndDate(long idKitchenSite, Date date);
+	
+	Ticket getByKitchenSiteAndDateAndUser(long idKitchenSite, Date date, String dni);
 
 }

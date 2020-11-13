@@ -13,6 +13,7 @@ import unlp.info.mapaw.comedor.domain.Menu;
 import unlp.info.mapaw.comedor.domain.Ticket;
 import unlp.info.mapaw.comedor.domain.User;
 import unlp.info.mapaw.comedor.dto.ItemShoppingCartDTO;
+import unlp.info.mapaw.comedor.dto.SearchTicketDTO;
 import unlp.info.mapaw.comedor.dto.ShoppingCartDTO;
 import unlp.info.mapaw.comedor.dto.TicketDTO;
 import unlp.info.mapaw.comedor.exception.ServiceException;
@@ -125,6 +126,25 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 	private boolean menuHasStock(Menu menu) {
 		logger.info("Menu:" + menu.getId() + " Stock: " + menu.getCurrentStock());
 		return menu.getCurrentStock() > 0;
+	}
+
+	public TicketDTO getBySearch(SearchTicketDTO searchDTO) {
+		if (searchDTO.getKitchenSite() == null) {
+			throw new ServiceException("KitchenSite es required");
+		}
+		if (searchDTO.getDate() == null) {
+			throw new ServiceException("Date es required");
+		}
+		if (searchDTO.getDni() == null || "".equals(searchDTO.getDni())) {
+			throw new ServiceException("Dni es required");
+		}
+		Ticket ticket = repository.getByKitchenSiteAndDateAndUser(searchDTO.getKitchenSite().getId(),
+				searchDTO.getDate(), searchDTO.getDni().toString());
+		if (ticket == null)
+			return null;
+		else {
+			return this.createDTO(ticket);
+		}
 	}
 
 }

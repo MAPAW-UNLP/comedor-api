@@ -1,6 +1,5 @@
 package unlp.info.mapaw.comedor.repository.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -66,6 +65,20 @@ public class TicketRepository implements ITicketRepository {
 		query.setParameter("fecha", date);
 		query.setParameter("idKitchenSite", idKitchenSite);	
 		return query.getResultList();
+	}
+
+	@Override
+	public Ticket getByKitchenSiteAndDateAndUser(long idKitchenSite, Date date, String dni) {
+		Query query = entityManager.createQuery(
+				"select o from Ticket o where o.client.dni = :dni and year(cast(o.menu.date as date)) = year(cast(:fecha as date)) and month(cast(o.menu.date as date)) = month(cast(:fecha as date)) and day(cast(o.menu.date as date)) = day(cast(:fecha as date)) and o.menu.kitchenSite.id= :idKitchenSite",
+				Ticket.class);
+		query.setParameter("fecha", date);
+		query.setParameter("dni", dni);
+		query.setParameter("idKitchenSite", idKitchenSite);
+		List<Ticket> tickets = query.getResultList();
+		if (tickets.isEmpty())
+			return null;
+		return tickets.get(0);
 	}
 
 }
