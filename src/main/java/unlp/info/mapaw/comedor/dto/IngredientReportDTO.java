@@ -8,7 +8,7 @@ public class IngredientReportDTO {
 
 	private String name;
 	
-	private BigDecimal quantity;
+	private BigDecimal quantity = BigDecimal.ZERO;
 	
 	private MeasurementEnum measurement;
 

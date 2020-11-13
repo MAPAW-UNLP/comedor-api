@@ -1,25 +1,32 @@
 package unlp.info.mapaw.comedor.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import io.swagger.v3.oas.models.Paths;
+import unlp.info.mapaw.comedor.domain.Ingredient;
 import unlp.info.mapaw.comedor.domain.KitchenSite;
 import unlp.info.mapaw.comedor.domain.Meal;
 import unlp.info.mapaw.comedor.domain.Menu;
 import unlp.info.mapaw.comedor.domain.Ticket;
 import unlp.info.mapaw.comedor.dto.CreateMenusDTO;
+import unlp.info.mapaw.comedor.dto.IngredientReportDTO;
 import unlp.info.mapaw.comedor.dto.KitchenSiteDTO;
 import unlp.info.mapaw.comedor.dto.MealReportDTO;
 import unlp.info.mapaw.comedor.dto.MenuDTO;
 import unlp.info.mapaw.comedor.dto.MenuSearchDTO;
+import unlp.info.mapaw.comedor.dto.MenusReportDTO;
 import unlp.info.mapaw.comedor.exception.ServiceException;
 import unlp.info.mapaw.comedor.repository.IMenuRepositoy;
+import unlp.info.mapaw.comedor.repository.ITicketRepository;
 
 @Service
 public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
@@ -32,6 +39,9 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 
 	@Autowired
 	private IMenuRepositoy menuRepository;
+
+	@Autowired
+	private ITicketRepository ticketRepository;
 
 	@Override
 	protected MenuDTO addCustomPropertiesToDTO(Menu entity, MenuDTO dto) {
@@ -158,13 +168,62 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		}
 
 	}
-	
-//	public List<MealReportDTO> a(){
-//		
-//		
-//		
-//		return null;
-//	}
-	
+
+	public MenusReportDTO createReportMenus(long idKitchenSite, Date date) {
+		MenusReportDTO menuReporte = new MenusReportDTO();
+		menuReporte.getMeals().addAll(this.salesReport(idKitchenSite, date));
+		Map<String, List<IngredientReportDTO>> ingredientMap = new HashMap<String, List<IngredientReportDTO>>();
+		for (MealReportDTO element : menuReporte.getMeals()) {
+			for (IngredientReportDTO ingredient : element.getIngredients()) {
+				if (ingredientMap.get(ingredient.getName()) == null) {
+					List<IngredientReportDTO> i = new ArrayList<IngredientReportDTO>();
+					i.add(ingredient);
+					ingredientMap.put(ingredient.getName(), i);
+				} else {
+					ingredientMap.get(ingredient.getName()).add(ingredient);
+				}
+			}
+		}
+		for (String elemen : ingredientMap.keySet()) {
+			List<IngredientReportDTO> olds = ingredientMap.get(elemen);
+			IngredientReportDTO ig = new IngredientReportDTO();
+			ig.setMeasurement(olds.get(0).getMeasurement());
+			ig.setName(elemen);
+			for (IngredientReportDTO ingredientReportDTO : olds) {
+				ig.setQuantity(ig.getQuantity().add(ingredientReportDTO.getQuantity()));
+			}
+			menuReporte.getIngredients().add(ig);
+		}
+		return menuReporte;
+	}
+
+	public List<MealReportDTO> salesReport(long idKitchenSite, Date date) {
+		Map<Menu, List<Ticket>> mapsForMenu = new HashMap<Menu, List<Ticket>>();
+		List<MealReportDTO> dtos = new ArrayList<MealReportDTO>();
+
+		for (Ticket ticket : ticketRepository.getByKitchenSiteAndDate(idKitchenSite, date)) {
+			if (mapsForMenu.get(ticket.getMenu()) == null) {
+				List<Ticket> ticketes = new ArrayList<Ticket>();
+				ticketes.add(ticket);
+				mapsForMenu.put(ticket.getMenu(), ticketes);
+			} else {
+				mapsForMenu.get(ticket.getMenu()).add(ticket);
+			}
+		}
+		for (Menu menu : mapsForMenu.keySet()) {
+			MealReportDTO mealReportDto = new MealReportDTO();
+			mealReportDto.setName(menu.getName());
+			mealReportDto.setCantSales(mapsForMenu.get(menu).size());
+			for (Ingredient ingredient : menu.getMeal().getIngredients()) {
+				IngredientReportDTO iReportDTO = new IngredientReportDTO();
+				iReportDTO.setMeasurement(ingredient.getRecipe().getMeasurement());
+				iReportDTO.setName(ingredient.getRecipe().getName());
+				iReportDTO.setQuantity(ingredient.getQuantity().multiply(new BigDecimal(mealReportDto.getCantSales())));
+				mealReportDto.getIngredients().add(iReportDTO);
+			}
+			dtos.add(mealReportDto);
+		}
+		return dtos;
+	}
 
 }
