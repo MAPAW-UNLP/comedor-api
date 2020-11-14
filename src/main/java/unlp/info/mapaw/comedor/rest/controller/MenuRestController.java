@@ -2,8 +2,6 @@ package unlp.info.mapaw.comedor.rest.controller;
 
 import java.util.Collection;
 
-import javax.net.ssl.SSLEngineResult.Status;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

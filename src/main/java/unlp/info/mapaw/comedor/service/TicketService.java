@@ -105,12 +105,13 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 		return true;
 	}
 
-	public synchronized void consumeTicket(String ticketNumber) {
-		Ticket ticket = repository.getTicketByNumber(ticketNumber);
+	public synchronized TicketDTO consumeTicket(long idTicket) {
+		Ticket ticket = crudService.findOne(Ticket.class, idTicket);
 		if (ticket == null || (ticket != null && ticket.isConsumed()))
 			throw new ServiceException("Ticket is not valid or was already consumed");
 		ticket.setConsumed(true);
-		crudService.save(ticket);
+		ticket = crudService.save(ticket);
+		return this.createDTO(ticket);
 	}
 
 	private void validateTicketsInDate(Date date) {
