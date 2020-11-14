@@ -105,8 +105,8 @@ public class TicketService extends AbstractEntityService<TicketDTO, Ticket> {
 		return true;
 	}
 
-	public synchronized TicketDTO consumeTicket(long idTicket) {
-		Ticket ticket = crudService.findOne(Ticket.class, idTicket);
+	public synchronized TicketDTO consumeTicket(TicketDTO ticketDTO) {
+		Ticket ticket = crudService.findOne(Ticket.class, ticketDTO.getId());
 		if (ticket == null || (ticket != null && ticket.isConsumed()))
 			throw new ServiceException("Ticket is not valid or was already consumed");
 		ticket.setConsumed(true);

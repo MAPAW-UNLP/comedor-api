@@ -68,8 +68,8 @@ public class TicketRestController extends AbstractRestController<TicketDTO> {
 	@PreAuthorize("hasRole('EMPLOYEE')")
 	@Operation(security = @SecurityRequirement(name = "bearerAuth"))
 	@PostMapping(value = "/consume")
-	public ResponseEntity<TicketDTO> consume(@RequestParam("idTicket") long idTicket) {
-		return ResponseEntity.status(HttpStatus.OK).body(service.consumeTicket(idTicket));
+	public ResponseEntity<TicketDTO> consume(@RequestBody TicketDTO ticketDTO) {
+		return ResponseEntity.status(HttpStatus.OK).body(service.consumeTicket(ticketDTO));
 	}
 
 }
