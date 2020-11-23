@@ -5,6 +5,8 @@ public class MealEvaluationDTO extends AbstractDTO {
 	private long idMeal;
 
 	private long idClient;
+	
+	private String clientName;
 
 	private String comments;
 
@@ -40,6 +42,14 @@ public class MealEvaluationDTO extends AbstractDTO {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
 	}
 
 }

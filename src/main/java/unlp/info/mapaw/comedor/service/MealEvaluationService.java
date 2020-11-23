@@ -23,6 +23,7 @@ public class MealEvaluationService extends AbstractEntityService<MealEvaluationD
 	protected MealEvaluationDTO addCustomPropertiesToDTO(MealEvaluation entity, MealEvaluationDTO dto) {
 		dto.setComments(entity.getComments());
 		dto.setIdClient(entity.getClient().getId());
+		dto.setClientName(entity.getClient().getFullname());
 		dto.setIdMeal(entity.getMeal().getId());
 		dto.setScore(entity.getScore());
 		return dto;
