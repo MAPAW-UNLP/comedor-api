@@ -94,4 +94,14 @@
         	<column  name="condition"  value="ESTUDIANTE"/>
     	</insert>
 	</changeSet>
+	<changeSet id="99.e" author="fiaccarino" logicalFilePath="user_data.xml">
+		<insert tableName="USER_AUTH">  
+        	<column  name="id"  valueSequenceNext="SEQ_USER_AUTH"/>
+        	<column  name="dni"  value="11111111"/>
+        	<column  name="password"  value="$2y$12$hDo/ktgwHe42mDluxpYo4OlRzGHmi2ciVHElugRoYjcGEdQcEDzt2"/>
+        	<column  name="fullname"  value="Empleado 2"/>
+        	<column  name="role"  value="EMPLOYEE"/>
+        	<column  name="email"  value="employees@gmail.com"/>
+    	</insert>
+	</changeSet>
 </databaseChangeLog>
