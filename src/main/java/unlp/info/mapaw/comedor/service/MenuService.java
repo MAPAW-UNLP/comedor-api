@@ -11,7 +11,6 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.swagger.v3.oas.models.Paths;
 import unlp.info.mapaw.comedor.domain.Ingredient;
 import unlp.info.mapaw.comedor.domain.KitchenSite;
 import unlp.info.mapaw.comedor.domain.Meal;
@@ -214,13 +213,19 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 			MealReportDTO mealReportDto = new MealReportDTO();
 			mealReportDto.setName(menu.getName());
 			mealReportDto.setCantSales(mapsForMenu.get(menu).size());
+			HashMap<String, IngredientReportDTO> ingredientsReport = new HashMap<String, IngredientReportDTO>();
 			for (Ingredient ingredient : menu.getMeal().getIngredients()) {
-				IngredientReportDTO iReportDTO = new IngredientReportDTO();
-				iReportDTO.setMeasurement(ingredient.getRecipe().getMeasurement());
-				iReportDTO.setName(ingredient.getRecipe().getName());
-				iReportDTO.setQuantity(ingredient.getQuantity().multiply(new BigDecimal(mealReportDto.getCantSales())));
-				mealReportDto.getIngredients().add(iReportDTO);
+				IngredientReportDTO iReportDTO = ingredientsReport.get(ingredient.getRecipe().getName());
+				if (iReportDTO == null) {
+					iReportDTO = new IngredientReportDTO();
+					iReportDTO.setMeasurement(ingredient.getRecipe().getMeasurement());
+					iReportDTO.setName(ingredient.getRecipe().getName());
+				}
+				iReportDTO.setQuantity(iReportDTO.getQuantity()
+						.add(ingredient.getQuantity().multiply(new BigDecimal(mealReportDto.getCantSales()))));
+				ingredientsReport.put(iReportDTO.getName(), iReportDTO);
 			}
+			mealReportDto.getIngredients().addAll(new ArrayList(ingredientsReport.values()));
 			dtos.add(mealReportDto);
 		}
 		return dtos;
