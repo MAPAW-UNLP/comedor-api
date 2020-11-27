@@ -44,7 +44,7 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 	@Autowired
 	private ITicketRepository ticketRepository;
 
-	private static String formatDate = "dd-MM-yyyy";
+	private static String formatDate = "dd/MM/yyyy";
 
 	@Override
 	protected MenuDTO addCustomPropertiesToDTO(Menu entity, MenuDTO dto) {
