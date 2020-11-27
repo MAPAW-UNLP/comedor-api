@@ -1,6 +1,8 @@
 package unlp.info.mapaw.comedor.service;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,6 +43,8 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 
 	@Autowired
 	private ITicketRepository ticketRepository;
+	
+	private static String formatDate = "dd-MM-yyyy";
 
 	@Override
 	protected MenuDTO addCustomPropertiesToDTO(Menu entity, MenuDTO dto) {
@@ -88,9 +92,10 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 	}
 
 	private boolean anyDateIsSameDay(List<Date> oldMenus, Date fecha) {
+		SimpleDateFormat dt = new SimpleDateFormat(formatDate);
 		for (Date date : oldMenus) {
 			if (DateUtils.isSameDay(date, fecha))
-				return true;
+				throw new ServiceException("Usted ya tienen adquirido un Ticket para la fecha " + dt.format(date)) ;
 		}
 		return false;
 	}
