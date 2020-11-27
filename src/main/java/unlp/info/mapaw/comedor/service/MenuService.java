@@ -116,7 +116,7 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		}
 		List<MenuDTO> menusDTO = this.getAll(Menu.class);
 		if (this.getUsuarioLogueado().isEmployee())
-			menusDTO = super.getAll(Menu.class);
+			menusDTO = this.createDTOList(crudService.findAll(Menu.class));
 		List<MenuDTO> menusSearhcer = new ArrayList<MenuDTO>();
 		if (this.getUsuarioLogueado().isClient())
 			for (MenuDTO menu : menusDTO) {
@@ -233,6 +233,15 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 			dtos.add(mealReportDto);
 		}
 		return dtos;
+	}
+
+	private List<MenuDTO> createDTOList(List<Menu> menus) {
+		List<MenuDTO> dtos = new ArrayList<MenuDTO>();
+		for (Menu menu : menus) {
+			dtos.add(this.createDTO(menu));
+		}
+		return dtos;
+
 	}
 
 }
