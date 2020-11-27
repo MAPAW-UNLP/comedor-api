@@ -114,13 +114,17 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		if (crudService.findOne(KitchenSite.class, search.getKitchenSite().getId()) == null) {
 			throw new ServiceException("Kitchen Site not exists");
 		}
-		List<MenuDTO> menusDTO = new ArrayList<MenuDTO>();
-		for (MenuDTO menu : this.getAll(Menu.class)) {
-			if (DateUtils.isSameDay(menu.getDate(), search.getDate())
-					&& menu.getKitchenSite().getId() == search.getKitchenSite().getId())
-				menusDTO.add(menu);
-		}
-		return menusDTO;
+		List<MenuDTO> menusDTO = this.getAll(Menu.class);
+		if (this.getUsuarioLogueado().isEmployee())
+			menusDTO = super.getAll(Menu.class);
+		List<MenuDTO> menusSearhcer = new ArrayList<MenuDTO>();
+		if (this.getUsuarioLogueado().isClient())
+			for (MenuDTO menu : menusDTO) {
+				if (DateUtils.isSameDay(menu.getDate(), search.getDate())
+						&& menu.getKitchenSite().getId() == search.getKitchenSite().getId())
+					menusSearhcer.add(menu);
+			}
+		return menusSearhcer;
 	}
 
 	public List<MenuDTO> createFrom(CreateMenusDTO createMenusDTO) {
