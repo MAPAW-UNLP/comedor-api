@@ -9,6 +9,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import unlp.info.mapaw.comedor.exception.ClientException;
 import unlp.info.mapaw.comedor.exception.ServiceException;
 
 @ControllerAdvice
@@ -27,6 +28,14 @@ public class CustomExceptionHandler {
 			final HttpServletRequest request) {
 		ErrorDTO dto = new ErrorDTO(HttpStatus.FORBIDDEN.value(),
 				"Access denied", "", request.getRequestURI());
+		return ResponseEntity.status(dto.getStatus()).contentType(MediaType.APPLICATION_JSON).body(dto);
+	}
+	
+	@ExceptionHandler(ClientException.class)
+	public ResponseEntity<ErrorDTO> handleServiceException(final ClientException rse,
+			final HttpServletRequest request) {
+		ErrorDTO dto = new ErrorDTO(HttpStatus.FORBIDDEN.value(),
+				HttpStatus.FORBIDDEN.getReasonPhrase(), rse.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(dto.getStatus()).contentType(MediaType.APPLICATION_JSON).body(dto);
 	}
 }
