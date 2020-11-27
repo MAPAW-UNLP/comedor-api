@@ -39,7 +39,7 @@ public class TicketRepository implements ITicketRepository {
 		hoy.setMinutes(0);
 		hoy.setSeconds(0);
 		String queryString = "select o from Ticket o where o.consumed = false and o.menu.date >= :hoy ";
-			queryString = queryString + "and o.client.id = :userId order by o.menu.date desc";
+			queryString = queryString + "and o.client.id = :userId order by o.menu.date asc";
 		Query query = entityManager.createQuery(queryString, Ticket.class);
 		if (user != null)
 			query.setParameter("userId", user.getId());
