@@ -95,7 +95,7 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		SimpleDateFormat dt = new SimpleDateFormat(formatDate);
 		for (Date date : oldMenus) {
 			if (DateUtils.isSameDay(date, fecha))
-				throw new ClientException("Usted ya tienen adquirido un Ticket para la fecha " + dt.format(date));
+				throw new ClientException("Usted ya tiene un Ticket adquirido para la fecha " + dt.format(date));
 		}
 		return false;
 	}
