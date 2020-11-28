@@ -78,37 +78,6 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		return new Menu();
 	}
 
-	@Override
-	public List<MenuDTO> getAll(Class<Menu> entityClass) {
-		List<MenuDTO> lista = new ArrayList<MenuDTO>();
-		List<Ticket> tickets = crudService.findAll(Ticket.class);
-		List<Date> oldMenus = this.getDatesForTicket(tickets);
-		for (Menu entity : menuRepository.getWithStock()) {
-			if (!this.anyDateIsSameDay(oldMenus, entity.getDate())) {
-				lista.add(createDTO(entity));
-			}
-		}
-		return lista;
-	}
-
-	private boolean anyDateIsSameDay(List<Date> oldMenus, Date fecha) {
-		SimpleDateFormat dt = new SimpleDateFormat(formatDate);
-		for (Date date : oldMenus) {
-			if (DateUtils.isSameDay(date, fecha))
-				throw new ClientException("Usted ya tiene un Ticket adquirido para la fecha " + dt.format(date));
-		}
-		return false;
-	}
-
-	private List<Date> getDatesForTicket(List<Ticket> tickets) {
-		List<Date> menuses = new ArrayList<Date>();
-		for (Ticket ti : tickets) {
-			menuses.add(ti.getMenu().getDate());
-		}
-		return menuses;
-
-	}
-
 	public List<MenuDTO> getBySearch(MenuSearchDTO search) {
 		if (search.getDate() == null) {
 			throw new ServiceException("Date is required");
@@ -120,11 +89,9 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 			throw new ServiceException("Kitchen Site not exists");
 		}
 		List<MenuDTO> menusDTO = new ArrayList<MenuDTO>();
-		if (this.getUsuarioLogueado().isClient()) {
-			menusDTO = this.getAll(Menu.class);
-		} else {
-			menusDTO = this.createDTOList(crudService.findAll(Menu.class));
-		}
+		if (this.getUsuarioLogueado().isClient())
+			this.checkTicketToDate(search.getDate());
+		menusDTO = this.createDTOList(crudService.findAll(Menu.class));
 		List<MenuDTO> menusSearhcer = new ArrayList<MenuDTO>();
 		for (MenuDTO menu : menusDTO) {
 			if (DateUtils.isSameDay(menu.getDate(), search.getDate())
@@ -133,6 +100,12 @@ public class MenuService extends AbstractEntityService<MenuDTO, Menu> {
 		}
 
 		return menusSearhcer;
+	}
+
+	private void checkTicketToDate(Date date) {
+		SimpleDateFormat dt = new SimpleDateFormat(formatDate);
+		if (ticketRepository.getByDateAndUser(date, this.getUsuarioLogueado().getUser()) != null)
+			throw new ClientException("Usted ya tiene un Ticket adquirido para la fecha " + dt.format(date));
 	}
 
 	public List<MenuDTO> createFrom(CreateMenusDTO createMenusDTO) {
